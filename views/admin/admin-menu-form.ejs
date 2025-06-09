@@ -1,0 +1,31 @@
+<%- include('partials/admin-header', { title: item ? 'Edit Cake' : 'Add New Cake' }) %>
+
+<form action="<%= action %>" method="POST" enctype="multipart/form-data" class="admin-form">
+    <div class="form-group">
+        <label for="name">Cake Name:</label>
+        <input type="text" id="name" name="name" value="<%= item ? item.name : '' %>" required>
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" value="<%= item ? item.price : '' %>" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"><%= item ? item.description : '' %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="ingredients">Ingredients (comma-separated):</label>
+        <input type="text" id="ingredients" name="ingredients" value="<%= item && item.ingredients ? item.ingredients.join(', ') : '' %>">
+    </div>
+    <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+        <% if (item && item.image) { %>
+            <p>Current Image: <img src="<%= item.image %>" alt="Current image for <%= item.name %>" class="current-image"></p>
+        <% } %>
+    </div>
+    <button type="submit" class="btn btn-primary"><%= item ? 'Update Cake' : 'Add Cake' %></button>
+    <a href="/admin/menu" class="btn btn-secondary">Cancel</a>
+</form>
+
+<%- include('partials/admin-footer') %>

@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: 'Menu' }) %>
+
+<section class="page-section">
+    <div class="container">
+        <h2 class="text-center">Our Delicious Menu</h2>
+        
+        <% if (menuItems && menuItems.length > 0) { %>
+            <div class="menu-grid">
+                <% menuItems.forEach(item => { %>
+                    <div class="menu-item scroll-animate">
+                        <img src="<%= item.image %>" alt="<%= item.name %>">
+                        <h3><%= item.name %></h3>
+                        <p class="price">$<%= item.price.toFixed(2) %></p>
+                        <p><%= item.description.substring(0, 100) %>...</p>
+                        <div class="menu-item-actions">
+                            <a href="/menu/<%= item.id %>" class="btn-details">View Details</a>
+                            <% if (whatsappNumber) { %>
+                                <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(item.name) %> for $<%= item.price.toFixed(2) %>." target="_blank" class="btn-whatsapp-order">Order via WhatsApp</a>
+                            <% } %>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p class="text-center mt-2">Our menu is currently being updated. Please check back soon!</p>
+        <% } %>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1717923456789",
+    "name": "Classic Chocolate Cake Test",
+    "price": 1200,
+    "description": "A rich and moist chocolate cake, perfect for any occasion.",
+    "ingredients": [
+      "Flour",
+      "Sugar",
+      "Cocoa Powder",
+      "Eggs",
+      "Milk",
+      "Butter"
+    ],
+    "image": "/images/menu/1749445311848-peakpx (1).jpg"
+  },
+  {
+    "id": "1717923456790",
+    "name": "Vanilla Bean Dream Cake",
+    "price": 1350,
+    "description": "Elegant vanilla cake made with real vanilla beans and a light buttercream frosting.",
+    "ingredients": [
+      "Flour",
+      "Sugar",
+      "Vanilla Beans",
+      "Eggs",
+      "Milk",
+      "Butter"
+    ],
+    "image": "/images/menu/1749446911462-peakpx.jpg"
+  },
+  {
+    "id": "1717923456791",
+    "name": "Red Velvet Delight",
+    "price": 1500,
+    "description": "A stunning red velvet cake with a classic cream cheese frosting.",
+    "ingredients": [
+      "Flour",
+      "Sugar",
+      "Cocoa Powder",
+      "Buttermilk",
+      "Eggs",
+      "Cream Cheese"
+    ],
+    "image": "/images/menu/1749446917563-peakpx (1).jpg"
+  }
+]

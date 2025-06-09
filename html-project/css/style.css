@@ -1,0 +1,601 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap');
+
+/* Reset and Base Styles */
+:root {
+    --primary-color: #D2691E; /* Saddle brown - inspired by the logo */
+    --secondary-color: #8B4513; /* Dark brown */
+    --accent-color: #FF6347; /* Tomato red - warm accent */
+    --text-color: #2C1810; /* Dark brown for text */
+    --text-color-secondary: #5D4037; /* Medium brown */
+    --bg-color: #FFF8F3; /* Warm cream background */
+    --bg-color-alt: #FFFFFF;
+    --border-color: #E6D3C7; /* Light brown border */
+    --success-color: #4CAF50; /* Green for success messages */
+    --warning-color: #FF9800; /* Orange for warnings */
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --shadow-sm: 0 2px 8px rgba(139, 69, 19, 0.1);
+    --shadow-md: 0 4px 16px rgba(139, 69, 19, 0.15);
+    --shadow-lg: 0 8px 32px rgba(139, 69, 19, 0.2);
+    --font-primary: 'Poppins', sans-serif;
+    --font-display: 'Pacifico', cursive;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.main-content-area {
+    flex-grow: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-color-secondary);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header & Branding */
+header {
+    background: var(--bg-color-alt);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#branding {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#logo {
+    height: 55px;
+    width: auto;
+    border-radius: var(--border-radius-sm);
+    transition: transform var(--transition-fast);
+}
+
+#logo:hover {
+    transform: scale(1.05);
+}
+
+#branding h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+#branding h1 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-family: var(--font-display);
+    text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
+}
+
+/* Navigation */
+header nav ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 30px;
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+    transition: all var(--transition-normal);
+    border-radius: var(--border-radius-sm);
+}
+
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all var(--transition-normal);
+    transform: translateX(-50%);
+}
+
+header nav ul li a:hover::after,
+header nav ul li.current a::after {
+    width: 80%;
+}
+
+header nav ul li a:hover,
+header nav ul li.current a {
+    color: var(--primary-color);
+    background-color: rgba(210, 105, 30, 0.1);
+}
+
+/* Page Sections */
+.page-section {
+    padding: 3rem 0;
+}
+
+/* Hero Section for Home Page */
+#showcase {
+    background: linear-gradient(135deg, var(--bg-color) 0%, rgba(210, 105, 30, 0.1) 100%);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color-secondary);
+}
+
+/* Home Hero Logo */
+.hero-logo {
+    display: block;
+    margin: 0 auto 1.5rem;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+#showcase .hero-logo {
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+#showcase .hero-logo:hover {
+    transform: scale(1.1);
+}
+
+/* About Section */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn, .btn-details, .btn-whatsapp-order {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover, .btn-details:hover, .btn-whatsapp-order:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #E55347;
+    color: #fff;
+}
+
+.btn-whatsapp-order {
+    background-color: #25D366;
+    margin-top: 0.5rem;
+}
+
+.btn-whatsapp-order:hover {
+    background-color: #1DAE50;
+    color: #fff;
+}
+
+/* Menu Item Actions */
+.menu-item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+/* Cards */
+.menu-grid, .gallery-grid, .stalls-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.menu-item, .gallery-item, .stall-card {
+    background-color: var(--bg-color-alt);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.menu-item:hover, .gallery-item:hover, .stall-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.menu-item img, .gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 1rem;
+    transition: transform var(--transition-normal);
+}
+
+.menu-item:hover img, .gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.menu-item h3, .gallery-item h3, .stall-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.menu-item .price, .cake-detail-info .price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-display);
+}
+
+.menu-item p, .gallery-item p, .stall-card p {
+    font-size: 0.95rem;
+    color: var(--text-color-secondary);
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Cake Detail Page */
+.cake-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+    padding: 2.5rem;
+    background-color: var(--bg-color-alt);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-top: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.cake-detail-image img {
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.cake-detail-info h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
+}
+
+.cake-detail-info .description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.cake-detail-info .ingredients-list {
+    list-style: none;
+    margin-bottom: 2rem;
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--accent-color);
+}
+
+.cake-detail-info .ingredients-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.cake-detail-info .ingredients-list li::before {
+    content: '🍰';
+    position: absolute;
+    left: 0;
+}
+
+/* Stalls Page Specifics */
+.stall-card {
+    border-left: 4px solid var(--accent-color);
+}
+
+.stall-card .stall-date-time {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.stall-card .stall-location {
+    color: var(--text-color-secondary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem 0;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+footer a {
+    color: var(--accent-color);
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+/* Scroll Animations */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Utility Classes */
+.text-center { 
+    text-align: center; 
+}
+
+.mt-1 { 
+    margin-top: 1rem !important; 
+}
+
+.mt-2 { 
+    margin-top: 2rem !important; 
+}
+
+.mb-1 { 
+    margin-bottom: 1rem !important; 
+}
+
+.mb-2 { 
+    margin-bottom: 2rem !important; 
+}
+
+/* Loading animation for images */
+img {
+    transition: opacity var(--transition-normal);
+}
+
+img:not([src]), img[src=""] {
+    opacity: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .cake-detail-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #branding {
+        margin-bottom: 10px;
+    }
+
+    header nav ul {
+        text-align: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    header nav ul li {
+        margin: 5px 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-content h2 {
+        font-size: 2rem;
+    }
+
+    .menu-grid, .gallery-grid, .stalls-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .page-section {
+        padding: 2rem 0;
+    }
+
+    .cake-detail-container {
+        padding: 1.5rem;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #logo {
+        height: 45px;
+    }
+    
+    #branding h1 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .btn, .btn-details, .btn-whatsapp-order {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+    }
+    
+    .menu-item img, .gallery-item img {
+        height: 180px;
+    }
+    
+    .cake-detail-info h1 {
+        font-size: 2.2rem;
+    }
+    
+    .menu-grid, .gallery-grid, .stalls-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Print styles */
+@media print {
+    header, footer {
+        display: none;
+    }
+    
+    .scroll-animate {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

@@ -1,0 +1,24 @@
+<%- include('partials/admin-header', { title: stall ? 'Edit Stall Event' : 'Add New Stall Event' }) %>
+
+<form action="<%= action %>" method="POST" class="admin-form">
+    <div class="form-group">
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName" value="<%= stall ? stall.eventName : '' %>" required>
+    </div>
+    <div class="form-group">
+        <label for="dateTime">Date & Time:</label>
+        <input type="datetime-local" id="dateTime" name="dateTime" value="<%= stall ? stall.dateTime : '' %>" required>
+    </div>
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" value="<%= stall ? stall.location : '' %>" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"><%= stall ? stall.description : '' %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary"><%= stall ? 'Update Stall' : 'Add Stall' %></button>
+    <a href="/admin/stalls" class="btn btn-secondary">Cancel</a>
+</form>
+
+<%- include('partials/admin-footer') %>

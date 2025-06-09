@@ -1,0 +1,26 @@
+<%- include('partials/header', { title: 'Upcoming Stalls' }) %>
+
+<section class="page-section">
+    <div class="container">
+        <h2 class="text-center">Catch Us at Our Next Stall!</h2>
+        
+        <% if (stalls && stalls.length > 0) { %>
+            <div class="stalls-list">
+                <% stalls.forEach(stall => { %>
+                    <div class="stall-card scroll-animate">
+                        <h3><%= stall.eventName %></h3>
+                        <p class="stall-date-time"><strong>Date & Time:</strong> <%= new Date(stall.dateTime).toLocaleString() %></p>
+                        <p class="stall-location"><strong>Location:</strong> <%= stall.location %></p>
+                        <% if (stall.description) { %>
+                            <p><strong>Details:</strong> <%= stall.description %></p>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p class="text-center mt-2">We don't have any upcoming stalls scheduled at the moment. Please check back soon!</p>
+        <% } %>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

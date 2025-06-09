@@ -1,0 +1,35 @@
+<%- include('partials/admin-header') -%>
+
+<main class="admin-dashboard-container">
+    <h1>Admin Dashboard</h1>
+
+    <% if (typeof pageError !== 'undefined' && pageError) { %>
+        <div class="alert alert-danger"><%= pageError %></div>
+    <% } %>
+
+    <div class="dashboard-summary">
+        <div class="summary-card scroll-animate">
+            <h2>Menu Items</h2>
+            <p class="count"><%= menuCount %></p>
+            <a href="/admin/menu" class="btn">Manage Menu</a>
+        </div>
+        <div class="summary-card scroll-animate">
+            <h2>Projects</h2>
+            <p class="count"><%= projectCount %></p>
+            <a href="/admin/projects" class="btn">Manage Projects</a>
+        </div>
+        <div class="summary-card scroll-animate">
+            <h2>Stall Events</h2>
+            <p class="count"><%= stallCount %></p>
+            <a href="/admin/stalls" class="btn">Manage Stalls</a>
+        </div>
+        <div class="summary-card scroll-animate">
+            <h2>WhatsApp Config</h2>
+            <p class="config-status">View & Update</p> 
+            <a href="/admin/config" class="btn">Configure</a>
+        </div>
+    </div>
+
+</main>
+
+<%- include('partials/admin-footer') -%>

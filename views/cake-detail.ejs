@@ -1,0 +1,35 @@
+<%- include('partials/header', { title: 'Cake Detail' }) %>
+
+<section class="page-section">
+    <div class="container">
+        <% if (cake) { %>
+            <div class="cake-detail-container scroll-animate">
+                <div class="cake-detail-image">
+                    <img src="<%= cake.image %>" alt="<%= cake.name %>">
+                </div>
+                <div class="cake-detail-info">
+                    <h1><%= cake.name %></h1>
+                    <p class="price">$<%= cake.price.toFixed(2) %></p>
+                    <p class="description"><%= cake.description %></p>
+                    <% if (cake.ingredients && cake.ingredients.length > 0) { %>
+                        <h4>Ingredients:</h4>
+                        <ul class="ingredients-list">
+                            <% cake.ingredients.forEach(ingredient => { %>
+                                <li><%= ingredient %></li>
+                            <% }); %>
+                        </ul>
+                    <% } %>
+                    <% if (whatsappNumber) { %>
+                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(cake.name) %> for $<%= cake.price.toFixed(2) %>. My details are: [Your Name], [Your Address for Delivery/Pickup details]." target="_blank" class="btn-whatsapp-order">Order via WhatsApp</a>
+                    <% } else { %>
+                        <p class="mt-1">To order, please contact us directly. Admin: Please set WhatsApp number in config.</p>
+                    <% } %>
+                </div>
+            </div>
+        <% } else { %>
+            <p class="text-center mt-2">Cake not found. Please return to the <a href="/menu">menu</a>.</p>
+        <% } %>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

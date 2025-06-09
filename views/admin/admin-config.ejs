@@ -1,0 +1,11 @@
+<%- include('partials/admin-header', { title: 'WhatsApp Configuration' }) %>
+
+<form action="/admin/config" method="POST" class="admin-form">
+    <div class="form-group">
+        <label for="whatsappNumber">WhatsApp Number:</label>
+        <input type="text" id="whatsappNumber" name="whatsappNumber" value="<%= whatsappNumber %>" placeholder="e.g., 1234567890 (include country code if necessary)" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Configuration</button>
+</form>
+
+<%- include('partials/admin-footer') %>
