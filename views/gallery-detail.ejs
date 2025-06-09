@@ -1,0 +1,40 @@
+<%- include('partials/header', { title: project ? project.title : 'Gallery Project' }) %>
+
+<section class="page-section gallery-detail-section">
+    <div class="container">
+        <% if (project) { %>
+            <div class="gallery-detail-container scroll-animate">
+                <div class="gallery-detail-header">
+                    <h1 class="gallery-detail-title"><%= project.title %></h1>
+                </div>
+                <div class="gallery-detail-image-wrapper">
+                    <img src="<%= project.image %>" alt="<%= project.title %>" class="gallery-detail-image">
+                </div>
+                <div class="gallery-detail-content">
+                    <% if (project.description) { %>
+                        <h3 class="gallery-detail-subtitle">About this Project:</h3>
+                        <p class="gallery-detail-description"><%= project.description %></p>
+                    <% } %>
+                    <!-- You can add more details here if available in your projects.json, e.g., date, client, specific techniques used -->
+                </div>
+                <div class="gallery-detail-actions">
+                    <a href="/gallery" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Gallery</a>
+                    <% if (whatsappNumber) { %>
+                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in a cake similar to your project: <%= encodeURIComponent(project.title) %>. Can we discuss this?" target="_blank" class="btn btn-primary btn-whatsapp-inquiry">
+                            <i class="fab fa-whatsapp"></i> Inquire about a similar project
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="empty-state text-center">
+                <i class="fas fa-image fa-3x text-muted mb-3"></i>
+                <h2>Project Not Found</h2>
+                <p class="text-muted">The project you are looking for does not exist or may have been moved.</p>
+                <a href="/gallery" class="btn btn-primary mt-3">Return to Gallery</a>
+            </div>
+        <% } %>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
