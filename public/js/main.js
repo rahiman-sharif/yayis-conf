@@ -35,12 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Mobile menu toggle (if you add a mobile menu button)
-    // const menuToggle = document.getElementById('menu-toggle');
-    // const nav = document.querySelector('header nav ul');
-    // if (menuToggle && nav) {
-    //     menuToggle.addEventListener('click', () => {
-    //         nav.classList.toggle('active');
-    //     });
-    // }
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+    }
 });
