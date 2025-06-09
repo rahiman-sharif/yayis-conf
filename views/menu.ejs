@@ -1,105 +1,74 @@
-<%- include('partials/header', { title: 'Menu' }) %>
+<%- include('partials/header', { title: 'Our Menu' }) %>
 
-<!-- Hero Section for Menu -->
-<section class="menu-hero">
+<!-- Menu Hero Section -->
+<section class="hero-section menu-hero-specific">
+    <div class="hero-background" style="background-image: url('/images/brand/menu-hero-bg.jpg');"> <!-- Add a specific menu hero background -->
+        <div class="hero-overlay"></div>
+    </div>
     <div class="container">
-        <div class="menu-hero-content">
-            <h1 class="menu-hero-title">Our Delicious Menu</h1>
-            <p class="menu-hero-subtitle">Handcrafted confections made with love and the finest ingredients</p>
-            <div class="menu-stats">
-                <div class="stat-item">
-                    <span class="stat-number"><%= menuItems ? menuItems.length : 0 %></span>
-                    <span class="stat-label">Delicious Items</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Fresh Daily</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">24hr</span>
-                    <span class="stat-label">Order Notice</span>
-                </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Our Delights</h1>
+            <p class="hero-subtitle">Freshly baked treats, crafted with passion and the finest ingredients.</p>
+            <div class="breadcrumb-nav">
+                <a href="/">Home</a> <i class="fas fa-chevron-right"></i> <span>Menu</span>
             </div>
         </div>
     </div>
 </section>
 
-<section class="menu-section">
+<section class="page-section menu-items-section">
     <div class="container">
-        <% if (menuItems && menuItems.length > 0) { %>
-            <!-- Filter Buttons -->
-            <div class="menu-filter-container">
-                <h3>Browse Our Selection</h3>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All Items</button>
-                    <button class="filter-btn" data-filter="cakes">Cakes</button>
-                    <button class="filter-btn" data-filter="cupcakes">Cupcakes</button>
-                    <button class="filter-btn" data-filter="pastries">Pastries</button>
-                </div>
-            </div>
-            
-            <div class="enhanced-menu-grid">
-                <% menuItems.forEach((item, index) => { %>
-                    <div class="enhanced-menu-item scroll-animate" data-category="<%= item.category || 'cakes' %>" style="animation-delay: <%= index * 0.1 %>s">
-                        <div class="menu-item-image-container">
+        <% if (typeof menuItems !== 'undefined' && menuItems.length > 0) { %>
+            <div class="menu-grid">
+                <% menuItems.forEach(item => { %>
+                    <div class="menu-card">
+                        <div class="menu-card-image">
                             <img src="<%= item.image %>" alt="<%= item.name %>" loading="lazy">
-                            <div class="image-overlay">
-                                <div class="quick-actions">
-                                    <a href="/menu/<%= item.id %>" class="quick-view-btn" title="Quick View">
-                                        <i class="icon-eye">👁️</i>
-                                    </a>
-                                    <% if (whatsappNumber) { %>
-                                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(item.name) %> for $<%= item.price.toFixed(2) %>." target="_blank" class="quick-order-btn" title="Quick Order">
-                                            <i class="icon-whatsapp">📱</i>
-                                        </a>
-                                    <% } %>
-                                </div>
+                            <div class="menu-card-image-overlay">
+                                <a href="/menu/<%= item.id %>" class="btn btn-outline-light btn-sm">
+                                    <i class="fas fa-eye"></i> View Details
+                                </a>
                             </div>
-                            <div class="price-badge">$<%= item.price.toFixed(2) %></div>
                         </div>
-                        
-                        <div class="menu-item-content">
-                            <div class="item-header">
-                                <h3><%= item.name %></h3>
-                                <div class="rating-stars">
-                                    <span class="stars">⭐⭐⭐⭐⭐</span>
-                                    <span class="rating-text">(4.8)</span>
-                                </div>
-                            </div>
-                            
-                            <p class="item-description"><%= item.description.substring(0, 120) %><%= item.description.length > 120 ? '...' : '' %></p>
-                            
+                        <div class="menu-card-content">
+                            <h3 class="menu-card-title"><%= item.name %></h3>
+                            <p class="menu-card-price">Rs <%= item.price %></p>
+                            <p class="menu-card-description">
+                                <%= item.description.length > 100 ? item.description.substring(0, 100) + '...' : item.description %>
+                            </p>
                             <% if (item.ingredients && item.ingredients.length > 0) { %>
-                                <div class="key-ingredients">
-                                    <span class="ingredients-label">Key:</span>
-                                    <% item.ingredients.slice(0, 3).forEach(ingredient => { %>
-                                        <span class="ingredient-tag"><%= ingredient %></span>
-                                    <% }); %>
+                                <div class="menu-card-ingredients">
+                                    <strong>Main Ingredients:</strong>
+                                    <div class="ingredient-tags">
+                                        <% item.ingredients.slice(0, 4).forEach(ingredient => { %>
+                                            <span class="ingredient-tag"><%= ingredient %></span>
+                                        <% }); %>
+                                        <% if (item.ingredients.length > 4) { %>
+                                            <span class="ingredient-tag more">+<%= item.ingredients.length - 4 %></span>
+                                        <% } %>
+                                    </div>
                                 </div>
                             <% } %>
-                            
-                            <div class="menu-item-footer">
-                                <div class="item-meta">
-                                    <span class="prep-time">🕒 24hr notice</span>
-                                    <span class="fresh-badge">🌿 Fresh</span>
-                                </div>
-                                <div class="menu-item-actions">
-                                    <a href="/menu/<%= item.id %>" class="btn-view-details">View Details</a>
-                                    <% if (whatsappNumber) { %>
-                                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(item.name) %> for $<%= item.price.toFixed(2) %>." target="_blank" class="btn-order-now">Order Now</a>
-                                    <% } %>
-                                </div>
+                            <div class="menu-card-actions">
+                                <a href="/menu/<%= item.id %>" class="btn btn-secondary btn-block">
+                                    <i class="fas fa-info-circle"></i> More Details
+                                </a>
+                                <% if (typeof whatsappNumber !== 'undefined' && whatsappNumber) { %>
+                                    <a href="https://wa.me/91<%= whatsappNumber %>?text=Hi! I'd like to order the <%= encodeURIComponent(item.name) %> (Rs <%= item.price %>)" target="_blank" class="btn btn-primary btn-block">
+                                        <i class="fab fa-whatsapp"></i> Order Now
+                                    </a>
+                                <% } %>
                             </div>
                         </div>
                     </div>
                 <% }); %>
             </div>
         <% } else { %>
-            <div class="empty-menu-state">
-                <div class="empty-icon">🍰</div>
-                <h3>Our menu is currently being updated</h3>
-                <p>We're working hard to bring you amazing new treats. Please check back soon!</p>
-                <a href="/" class="btn-secondary">Return Home</a>
+            <div class="empty-state">
+                <div class="empty-state-icon"><i class="fas fa-cookie-bite"></i></div>
+                <h2 class="empty-state-title">Our Menu is Baking!</h2>
+                <p class="empty-state-message">We're currently whipping up some new delicious items. Please check back soon for our updated menu!</p>
+                <a href="/" class="btn btn-primary">Back to Home</a>
             </div>
         <% } %>
     </div>

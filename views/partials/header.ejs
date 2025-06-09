@@ -7,14 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <header>
+<body>    <header>
         <div class="container">
             <div id="branding">
                 <a href="/"><img src="/images/brand/logo.png" alt="Yayi's Confectionery Logo" id="logo"></a>
                 <h1><a href="/">Yayi's Confectionery</a></h1>
             </div>
-            <nav>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <nav id="main-nav" class="main-nav">
                 <ul>
                     <li class="<%= title === 'Home' ? 'current' : '' %>"><a href="/">Home</a></li>
                     <li class="<%= title === 'Menu' || title === 'Cake Detail' ? 'current' : '' %>"><a href="/menu">Menu</a></li>

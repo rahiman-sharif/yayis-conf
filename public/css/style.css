@@ -106,12 +106,14 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 #branding {
     display: flex;
     align-items: center;
     gap: 15px;
+    z-index: 1001;
 }
 
 #logo {
@@ -138,18 +140,61 @@ header .container {
     text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
 }
 
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+    transition: transform var(--transition-fast);
+}
+
+.mobile-menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 3px 0;
+    transition: all var(--transition-normal);
+    border-radius: 2px;
+}
+
+/* Hamburger animation when active */
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
 /* Navigation */
-header nav ul {
+.main-nav ul {
     padding: 0;
     list-style: none;
     display: flex;
+    margin: 0;
 }
 
-header nav ul li {
+.main-nav ul li {
     margin-left: 30px;
 }
 
-header nav ul li a {
+.main-nav ul li a {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
@@ -159,7 +204,7 @@ header nav ul li a {
     border-radius: var(--border-radius-sm);
 }
 
-header nav ul li a::after {
+.main-nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -171,13 +216,13 @@ header nav ul li a::after {
     transform: translateX(-50%);
 }
 
-header nav ul li a:hover::after,
-header nav ul li.current a::after {
+.main-nav ul li a:hover::after,
+.main-nav ul li.current a::after {
     width: 80%;
 }
 
-header nav ul li a:hover,
-header nav ul li.current a {
+.main-nav ul li a:hover,
+.main-nav ul li.current a {
     color: var(--primary-color);
     background-color: rgba(210, 105, 30, 0.1);
 }
@@ -736,6 +781,69 @@ header nav ul li.current a {
 }
 
 @media (max-width: 768px) {
+    /* Mobile Navigation Styles */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: 100px; /* Adjust based on header height */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color-alt);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-100%);
+        transition: transform var(--transition-normal);
+        z-index: 999;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .main-nav.active {
+        transform: translateY(0);
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        padding: 1rem 0;
+        margin: 0;
+    }
+    
+    .main-nav ul li {
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .main-nav ul li:last-child {
+        border-bottom: none;
+    }
+    
+    .main-nav ul li a {
+        display: block;
+        padding: 1rem 2rem;
+        margin: 0;
+        font-size: 1.1rem;
+        border-radius: 0;
+    }
+    
+    .main-nav ul li a::after {
+        display: none; /* Remove underline effect on mobile */
+    }
+    
+    /* Adjust header for mobile */
+    header .container {
+        padding: 0 1rem;
+    }
+    
+    #branding h1 {
+        font-size: 1.3rem;
+    }
+    
+    #logo {
+        height: 50px;
+    }
+
     .hero-title { font-size: 2.5rem; }
     .hero-subtitle { font-size: 1.2rem; }
     .hero-description { font-size: 1rem; }
@@ -1271,4 +1379,65 @@ header nav ul li.current a {
 }
 
 /* Footer */
-/* ...existing code... */
+footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--bg-color-alt);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--accent-color) 0%, 
+        var(--primary-color) 50%, 
+        var(--accent-color) 100%);
+}
+
+footer .container {
+    position: relative;
+    z-index: 1;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+footer p::before {
+    content: '🧁';
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+footer p::after {
+    content: '🎂';
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Add subtle animation to footer */
+@keyframes footerGlow {
+    0%, 100% { 
+        box-shadow: 0 -2px 10px rgba(210, 105, 30, 0.2); 
+    }
+    50% { 
+        box-shadow: 0 -2px 15px rgba(210, 105, 30, 0.4); 
+    }
+}
+
+footer {
+    animation: footerGlow 3s ease-in-out infinite;
+}
