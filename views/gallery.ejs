@@ -1,11 +1,8 @@
 <%- include('partials/header', { title: 'Project Gallery' }) %>
 
-<section class="gallery-hero page-hero"> <!-- Added page-hero for common hero styling -->
+<section class="gallery-hero">
     <div class="hero-overlay"></div>
     <div class="hero-content text-center">
-        <div class="breadcrumb-container">
-            <a href="/">Home</a> <i class="fas fa-angle-right"></i> <span>Gallery</span>
-        </div>
         <h1>Our Cake Creations</h1>
         <p>A showcase of our passion, baked into every project.</p>
     </div>
@@ -18,16 +15,15 @@
                 <% projects.forEach(project => { %>
                     <div class="gallery-item scroll-animate">
                         <div class="gallery-item-image-container">
-                            <img src="<%= project.image %>" alt="<%= project.title %>" class="gallery-item-image">
-                            <div class="gallery-item-overlay">
-                                <a href="/gallery/<%= project.id %>" class="btn btn-sm btn-view-details" title="View Details"> <!-- Standardized button class -->
+                            <img src="<%= project.image %>" alt="<%= project.title %>" class="gallery-item-image">                            <div class="gallery-item-overlay">
+                                <a href="/gallery/<%= project.id %>" class="btn-view-full" title="View Details">
                                     <i class="fas fa-eye"></i> View Details
                                 </a>
                             </div>
                         </div>
                         <div class="gallery-item-content">
                             <h3 class="gallery-item-title"><a href="/gallery/<%= project.id %>"><%= project.title %></a></h3>
-                            <p class="gallery-item-description line-clamp-3"><%= project.description %></p> <!-- Added line-clamp-3 for truncation -->
+                            <p class="gallery-item-description"><%= project.description %></p>
                         </div>
                     </div>
                 <% }); %>

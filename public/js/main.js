@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Smooth scroll for navigation links (optional, but good for UX)
-    const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+    const navLinks = document.querySelectorAll('#main-nav a[href^="#"]'); // Changed selector
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();

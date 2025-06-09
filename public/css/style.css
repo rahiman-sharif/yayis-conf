@@ -772,6 +772,25 @@ header .container {
     font-size: 1.1rem;
 }
 
+/* Specific styles for WhatsApp order button on cake-detail page */
+.cake-detail-info .btn-whatsapp-order {
+    display: inline-flex; /* Use flex to align icon and text */
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px; /* Generous padding */
+    font-size: 1.1rem; /* Larger font size */
+    margin-top: 20px; /* Space above the button */
+    width: auto; /* Auto width based on content */
+    min-width: 250px; /* Minimum width for better presence */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cake-detail-info .btn-whatsapp-order i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.3em; /* Icon size relative to button font */
+}
+
 /* Responsive adjustments for Home Page Sections */
 @media (max-width: 992px) {
     .hero-title { font-size: 3rem; }
@@ -930,10 +949,9 @@ header .container {
     background-color: var(--bg-color-alt);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-md);
-    overflow: hidden;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .menu-card:hover {
@@ -1036,18 +1054,68 @@ header .container {
 }
 
 .menu-item-actions {
-    margin-top: auto; /* Pushes actions to the bottom */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem; /* Slightly reduced gap */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px; /* Space above the action buttons */
+    width: 100%;
 }
 
-.menu-item-actions .btn {
-    padding: 0.7rem 1rem; /* Standardized padding */
-    font-size: 0.9rem;
+/* Common styles for buttons within menu-item-actions */
+.menu-item-actions .btn-primary,
+.menu-item-actions .btn-secondary {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    padding: 12px 15px; /* Consistent padding for height */
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5; /* Consistent line height */
+    gap: 8px; /* Space between icon and text */
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Added color to transition */
+    box-shadow: var(--shadow-sm);
+    border: 1px solid transparent; /* Start with a transparent border */
+    color: var(--bg-color-alt); /* Ensure text is white, using variable */
+}
+
+.menu-item-actions .btn-primary:hover,
+.menu-item-actions .btn-secondary:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Specific styles for primary button in menu actions */
+.menu-item-actions .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    /* color: var(--bg-color-alt); is inherited */
+}
+.menu-item-actions .btn-primary:hover {
+    background-color: var(--secondary-color); /* Use defined variable (dark brown) */
+    border-color: var(--secondary-color);   /* Use defined variable (dark brown) */
+    color: var(--bg-color-alt); /* Explicitly ensure white text */
+}
+
+/* Specific styles for secondary button in menu actions */
+.menu-item-actions .btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    /* color: var(--bg-color-alt); is inherited */
+}
+.menu-item-actions .btn-secondary:hover {
+    background-color: var(--primary-color); /* Use defined variable (saddle brown) */
+    border-color: var(--primary-color);   /* Use defined variable (saddle brown) */
+    color: var(--bg-color-alt); /* Explicitly ensure white text */
+}
+
+/* Icon styling within these buttons */
+.menu-item-actions .btn i {
+    font-size: 1.1em; /* Relative to button's font size */
+    line-height: 1; /* Prevent icon from adding extra line height */
+    /* Icon color will inherit from button's text color (var(--bg-color-alt)) */
 }
 
 /* General Page Hero Styles (can be shared across Menu, Gallery, Stalls) */

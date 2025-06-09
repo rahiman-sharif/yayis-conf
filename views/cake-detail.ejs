@@ -20,7 +20,9 @@
                         </ul>
                     <% } %>
                     <% if (whatsappNumber) { %>
-                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(cake.name) %> for Rs <%= cake.price %>. My details are: [Your Name], [Your Address for Delivery/Pickup details]." target="_blank" class="btn-whatsapp-order">Order via WhatsApp</a>
+                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(cake.name) %> for Rs <%= cake.price %>. My details are: [Your Name], [Your Address for Delivery/Pickup details]." target="_blank" class="btn btn-primary btn-whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </a>
                     <% } else { %>
                         <p class="mt-1">To order, please contact us directly. Admin: Please set WhatsApp number in config.</p>
                     <% } %>
