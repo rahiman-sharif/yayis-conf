@@ -1,24 +1,82 @@
 <%- include('partials/header', { title: 'Upcoming Stalls' }) %>
 
-<section class="page-section">
+<section class="stalls-hero page-hero"> <!-- Added page-hero -->
+    <div class="hero-overlay"></div>
+    <div class="hero-content text-center">
+        <div class="breadcrumb-container">
+            <a href="/">Home</a> <i class="fas fa-angle-right"></i> <span>Stalls</span>
+        </div>
+        <h1>Find Our Pop-Up Stalls</h1>
+        <p>Come meet us and taste our delicious cakes in person!</p>
+    </div>
+</section>
+
+<section class="page-section stalls-section">
     <div class="container">
-        <h2 class="text-center">Catch Us at Our Next Stall!</h2>
-        
         <% if (stalls && stalls.length > 0) { %>
-            <div class="stalls-list">
+            <div class="stalls-grid">
                 <% stalls.forEach(stall => { %>
                     <div class="stall-card scroll-animate">
-                        <h3><%= stall.eventName %></h3>
-                        <p class="stall-date-time"><strong>Date & Time:</strong> <%= new Date(stall.dateTime).toLocaleString() %></p>
-                        <p class="stall-location"><strong>Location:</strong> <%= stall.location %></p>
-                        <% if (stall.description) { %>
-                            <p><strong>Details:</strong> <%= stall.description %></p>
+                        <div class="stall-card-header">
+                            <h3 class="stall-event-name"><i class="fas fa-store-alt mr-2"></i><%= stall.eventName %></h3>
+                        </div>
+                        <div class="stall-card-body">
+                            <div class="stall-info-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div class="stall-info-content">
+                                    <strong>Date & Time:</strong>
+                                    <span>
+                                        <% 
+                                        let displayDate = 'Not available';
+                                        try {
+                                            const dateObj = new Date(stall.dateTime);
+                                            if (!isNaN(dateObj.getTime())) {
+                                                displayDate = dateObj.toLocaleString([], { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+                                            } else {
+                                                displayDate = stall.dateTime; // Show original if it's a non-standard string
+                                            }
+                                        } catch (e) {
+                                            displayDate = stall.dateTime; // Fallback to original string if any error
+                                        }
+                                        %>
+                                        <%= displayDate %>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="stall-info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="stall-info-content">
+                                    <strong>Location:</strong>
+                                    <span><%= stall.location %></span>
+                                </div>
+                            </div>
+                            <% if (stall.description) { %>
+                                <div class="stall-info-item stall-description-item">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div class="stall-info-content">
+                                        <strong>Details:</strong>
+                                        <p class="stall-description-text line-clamp-4"><%= stall.description %></p>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <% if (stall.mapLink) { %>
+                        <div class="stall-card-footer">
+                            <a href="<%= stall.mapLink %>" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-map-marked-alt"></i> View Map
+                            </a>
+                        </div>
                         <% } %>
                     </div>
                 <% }); %>
             </div>
         <% } else { %>
-            <p class="text-center mt-2">We don't have any upcoming stalls scheduled at the moment. Please check back soon!</p>
+            <div class="empty-state empty-stalls-state"> <!-- Added common empty-state class -->
+                <i class="fas fa-store-alt-slash empty-state-icon"></i>
+                <h2 class="empty-state-title">No Stalls Scheduled</h2>
+                <p class="empty-state-message">We're planning our next appearances! Please check back soon for updates on where to find us.</p>
+                <a href="/menu" class="btn btn-primary mt-3"><i class="fas fa-birthday-cake"></i> View Our Menu</a>
+            </div>
         <% } %>
     </div>
 </section>

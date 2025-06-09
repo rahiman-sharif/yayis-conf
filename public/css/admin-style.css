@@ -1,98 +1,43 @@
-/* Basic styles for Yayi's Confectionery - Admin Panel */
+/* filepath: c:\\coplilot\\yayi\\public\\css\\admin-style.css */
+:root {
+    --admin-primary-color: #3498db;       /* Bright blue for active elements, buttons */
+    --admin-primary-color-dark: #2980b9;  /* Darker blue for hover states */
+    --admin-secondary-color: #2c3e50;     /* Dark blue-gray for sidebar, dark text elements */
+    --admin-danger-color: #e74c3c;        /* Red for danger buttons */
+    --admin-danger-color-dark: #c0392b;   /* Darker red for hover */
+    --admin-gray-color: #95a5a6;          /* Gray for secondary buttons */
+    --admin-gray-color-dark: #7f8c8d;     /* Darker gray for hover */
+
+    --admin-text-color: #333;             /* Main text color on light backgrounds */
+    --admin-text-light: #ecf0f1;          /* Text color on dark backgrounds (sidebar) */
+    --admin-text-muted: #7f8c8d;          /* Muted text (like footer) */
+    
+    --admin-bg-main: #f4f7f6;             /* Overall page background */
+    --admin-bg-content: #ecf0f1;          /* Main content area background */
+    --admin-bg-sidebar: #2c3e50;          /* Sidebar background */
+    --admin-bg-card: #fff;                /* Card, form, table background */
+    
+    --admin-border-color: #ddd;           /* Default border for tables, etc. */
+    --admin-border-color-input: #bdc3c7;  /* Input field borders */
+    
+    --admin-shadow-sm: 0 1px 2px rgba(0,0,0,0.05); /* Softer shadow */
+    --admin-shadow-md: 0 2px 4px rgba(0,0,0,0.07); /* Medium shadow */
+    --admin-shadow-lg: 0 4px 8px rgba(0,0,0,0.1); /* Larger shadow */
+
+    --admin-border-radius-sm: 3px;
+    --admin-border-radius: 4px;           /* Standard border radius */
+    --admin-border-radius-lg: 6px;          /* Larger border radius */
+
+    --admin-font-family: \'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Basic styles for Yayi\'s Confectionery - Admin Panel */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--admin-font-family);
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem;
-}
-
-header h1 {
-    margin: 0;
-    padding: 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #222;
-    color: #fff;
-    margin-top: 30px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-form div {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="file"],
-textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
+    background-color: var(--admin-bg-main);
+    color: var(--admin-text-color);
 }
 
 /* Admin Panel Styles */
@@ -103,15 +48,15 @@ button:hover {
 
 .admin-sidebar {
     width: 250px;
-    background-color: #2c3e50; /* Dark blue-gray */
-    color: #ecf0f1; /* Light gray */
+    background-color: var(--admin-bg-sidebar); 
+    color: var(--admin-text-light); 
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
-.admin-sidebar h2 {
+.admin-sidebar h2 { /* This is the "Yayi's Admin" text in the sidebar */
     text-align: center;
-    color: #fff;
+    color: var(--admin-text-light); /* Ensures it's white/light on dark sidebar */
     margin-bottom: 30px;
     font-size: 24px;
 }
@@ -124,24 +69,24 @@ button:hover {
 
 .admin-sidebar ul li a {
     display: block;
-    color: #ecf0f1;
+    color: var(--admin-text-light);
     padding: 12px 15px;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: var(--admin-border-radius);
     margin-bottom: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .admin-sidebar ul li a:hover,
 .admin-sidebar ul li a.active {
-    background-color: #3498db; /* Bright blue */
-    color: #fff;
+    background-color: var(--admin-primary-color); 
+    color: var(--admin-text-light);
 }
 
 .admin-main-content {
     flex-grow: 1;
     padding: 30px;
-    background-color: #ecf0f1; /* Light gray background for content area */
+    background-color: var(--admin-bg-content); /* Light gray background for content area */
 }
 
 .admin-header {
@@ -150,19 +95,19 @@ button:hover {
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #bdc3c7; /* Light gray border */
+    border-bottom: 1px solid var(--admin-border-color); /* Light gray border */
 }
 
-.admin-header h1 {
+.admin-header h1 { /* This is the main page title e.g., "Menu Manager" */
     margin: 0;
     font-size: 28px;
-    color: #2c3e50;
+    color: var(--admin-text-color); /* Changed to neutral dark for light background */
 }
 
 .btn {
     padding: 10px 18px;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: var(--admin-border-radius);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -170,28 +115,30 @@ button:hover {
 }
 
 .btn-primary {
-    background-color: #3498db; /* Bright blue */
-    color: #fff;
+    background-color: var(--admin-primary-color); 
+    color: var(--admin-text-light);
 }
 .btn-primary:hover {
-    background-color: #2980b9; /* Darker blue */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: var(--admin-primary-color-dark); 
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-danger {
-    background-color: #e74c3c; /* Red */
-    color: #fff;
+    background-color: var(--admin-danger-color); 
+    color: var(--admin-text-light);
 }
 .btn-danger:hover {
-    background-color: #c0392b; /* Darker red */
+    background-color: var(--admin-danger-color-dark); 
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-secondary {
-    background-color: #95a5a6; /* Gray */
-    color: #fff;
+    background-color: var(--admin-gray-color); 
+    color: var(--admin-text-light);
 }
 .btn-secondary:hover {
-    background-color: #7f8c8d; /* Darker Gray */
+    background-color: var(--admin-gray-color-dark); 
+    box-shadow: var(--admin-shadow-sm);
 }
 
 /* Tables */
@@ -199,19 +146,22 @@ button:hover {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background-color: var(--admin-bg-card);
+    box-shadow: var(--admin-shadow-sm);
+    border-radius: var(--admin-border-radius); /* Added border radius to table */
+    overflow: hidden; /* Ensures border radius clips content */
 }
 
 .admin-table th, .admin-table td {
     padding: 12px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--admin-border-color);
     text-align: left;
+    vertical-align: middle; /* Added for better default vertical alignment */
 }
 
 .admin-table th {
-    background-color: #34495e; /* Darker blue-gray for headers */
-    color: #ecf0f1;
+    background-color: var(--admin-secondary-color); 
+    color: var(--admin-text-light);
     font-weight: 600;
 }
 
@@ -220,32 +170,41 @@ button:hover {
 }
 
 .admin-table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1; /* Keep or use a light variable */
 }
 
 .admin-table img {
     max-width: 80px;
     max-height: 80px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--admin-border-radius-sm);
 }
 
+/* Style for the actions cell itself on desktop */
+.admin-table td.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* This will space out the direct children (<a> and <form>) */
+}
+
+/* Modify this rule for children of .actions */
 .actions a, .actions button {
-    margin-right: 8px;
+    /* margin-right: 8px; */ /* Removed: Using gap on parent td.actions instead */
     padding: 6px 10px;
     font-size: 14px;
 }
 
 .actions form {
-    display: inline;
+    display: inline; /* This is fine */
+    margin: 0; /* Remove default form margins */
 }
 
 /* Forms */
 .admin-form {
-    background-color: #fff;
+    background-color: var(--admin-bg-card);
     padding: 25px;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    border-radius: var(--admin-border-radius-lg); /* Slightly larger radius for forms */
+    box-shadow: var(--admin-shadow-md);
     max-width: 700px;
 }
 
@@ -257,7 +216,7 @@ button:hover {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #34495e;
+    color: var(--admin-secondary-color);
 }
 
 .form-group input[type="text"],
@@ -267,19 +226,22 @@ button:hover {
 .form-group input[type="file"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #bdc3c7; /* Light gray border */
-    border-radius: 4px;
+    border: 1px solid var(--admin-border-color-input); 
+    border-radius: var(--admin-border-radius);
     box-sizing: border-box;
     font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added transition */
 }
 
-.form-group textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.form-group input[type="file"] {
-    padding: 5px;
+/* Enhanced focus styles for form inputs */
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="datetime-local"]:focus,
+.form-group textarea:focus,
+.form-group input[type="file"]:focus {
+    border-color: var(--admin-primary-color); 
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25); /* Consider using a variable for the RGB values */
+    outline: none;
 }
 
 .current-image {
@@ -287,7 +249,7 @@ button:hover {
     margin-top: 10px;
     max-width: 150px;
     max-height: 150px;
-    border-radius: 4px;
+    border-radius: var(--admin-border-radius);
 }
 
 /* Admin Dashboard Specific */
@@ -303,11 +265,11 @@ button:hover {
 }
 
 .summary-card {
-    background-color: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
+    background-color: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-border-radius-lg); /* Using larger radius for cards */
     padding: 1.5rem;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--admin-shadow-md); /* Enhanced shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -317,18 +279,18 @@ button:hover {
 
 .summary-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--admin-shadow-lg); /* Slightly larger shadow on hover */
 }
 
 .summary-card h2 {
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--admin-primary-color); /* Use primary color for card titles */
     margin-bottom: 0.75rem;
 }
 
 .summary-card p {
     font-size: 1.1rem;
-    color: var(--text-color-secondary);
+    color: var(--admin-text-muted); /* Use muted text for descriptions */
     margin-bottom: 1rem;
     flex-grow: 1; /* Allows paragraph to take available space */
 }
@@ -336,28 +298,28 @@ button:hover {
 .summary-card .count {
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--secondary-color);
+    color: var(--admin-secondary-color); /* Use secondary color for count */
     margin-bottom: 1rem;
 }
 
 .summary-card .config-status {
     font-style: italic;
-    color: var(--text-color-secondary);
+    color: var(--admin-text-muted);
 }
 
 .summary-card .btn {
-    align-self: flex-start; /* Align button to the start of the flex container if not stretching */
-    background-color: var(--primary-color);
-    color: white;
+    align-self: flex-start; 
+    background-color: var(--admin-primary-color);
+    color: var(--admin-text-light); /* Ensure text is light on primary bg */
     padding: 0.6rem 1.2rem;
     text-decoration: none;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--admin-border-radius); /* Consistent border radius */
     transition: background-color 0.3s ease;
     text-align: center;
 }
 
 .summary-card .btn:hover {
-    background-color: var(--primary-color-dark);
+    background-color: var(--admin-primary-color-dark);
 }
 
 /* General Alert Styles (can be expanded) */
@@ -365,14 +327,15 @@ button:hover {
     padding: 1rem;
     margin-bottom: 1.5rem;
     border: 1px solid transparent;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--admin-border-radius-sm);
     font-size: 1rem;
 }
 
 .alert-danger {
-    color: #721c24; /* Dark red text */
-    background-color: #f8d7da; /* Light red background */
-    border-color: #f5c6cb; /* Reddish border */
+    color: #721c24; 
+    background-color: #f8d7da; 
+    border-color: #f5c6cb; 
+    /* Consider using variables for alert colors too if used frequently */
 }
 
 .alert-success {
@@ -381,14 +344,14 @@ button:hover {
     border-color: #c3e6cb;
 }
 
-/* Footer for Admin (if any, usually part of the main layout) */
+/* Footer for Admin */
 .admin-footer {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
     font-size: 14px;
-    color: #7f8c8d;
-    border-top: 1px solid #bdc3c7;
+    color: var(--admin-text-muted);
+    border-top: 1px solid var(--admin-border-color);
 }
 
 /* Admin Sidebar Logo */
@@ -407,8 +370,155 @@ button:hover {
     margin-bottom: 0.5rem;
 }
 
-.admin-sidebar .admin-logo h2 {
+.admin-sidebar .admin-logo h2 { /* This is "Yayi's Admin" text below the logo in sidebar */
     margin: 0;
     font-size: 1.4rem;
-    color: #fff; /* Assuming dark sidebar, white text */
+    color: var(--admin-text-light); /* Ensures it's white/light on dark sidebar */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none; /* Remove shadow when stacked */
+    }
+
+    .admin-sidebar .admin-logo {
+        flex-direction: row; /* Logo and text side-by-side */
+        justify-content: center; /* Center items */
+        padding: 0.5rem 0;
+    }
+
+    #admin-logo-image {
+        height: 40px; /* Smaller logo for mobile */
+        margin-right: 10px; /* Space between logo and text */
+        margin-bottom: 0;
+    }
+    
+    .admin-sidebar .admin-logo h2 {
+        font-size: 1.2rem; /* Slightly smaller text */
+    }
+
+    .admin-sidebar nav ul {
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center; /* Center navigation items */
+        padding-top: 10px;
+    }
+
+    .admin-sidebar nav ul li {
+        margin: 5px; /* Adjust margin for wrapped items */
+    }
+
+    .admin-sidebar nav ul li a {
+        padding: 10px 12px; /* Adjust padding for smaller buttons */
+        font-size: 0.9rem;
+    }
+
+    .admin-main-content {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .admin-header {
+        flex-direction: column; /* Stack title and any buttons */
+        align-items: flex-start;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+
+    .admin-header h1 {
+        font-size: 22px; /* Smaller heading for mobile */
+        margin-bottom: 10px; /* Space if there are elements below */
+    }
+
+    .admin-table, 
+    .admin-table thead, 
+    .admin-table tbody, 
+    .admin-table th, 
+    .admin-table td, 
+    .admin-table tr {
+        display: block; /* Make table elements stack */
+    }
+
+    .admin-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        /* Hide table headers but keep them accessible */
+    }
+
+    .admin-table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+    
+    .admin-table td {
+        border: none;
+        border-bottom: 1px solid var(--admin-border-color); /* Use variable */
+        position: relative;
+        padding-left: 50%; /* Space for the data label */
+        text-align: right; /* Align text to the right */
+        white-space: normal; /* Allow text to wrap */
+        display: block; /* Ensure it's block for stacking */
+        min-height: 30px; /* Add min-height */
+    }
+
+    .admin-table td:before {
+        /* Use data-label attribute for pseudo-element content */
+        content: attr(data-label);
+        position: absolute;
+        left: 10px; /* Adjust as needed */
+        width: calc(50% - 20px); /* Adjust as needed */
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left; /* Align label text to the left */
+    }
+    
+    .admin-table td.actions, .actions { /* Ensure actions display correctly */
+        padding-left: 10px; 
+        text-align: left;
+        display: flex;     /* Use flexbox for action buttons */
+        flex-wrap: wrap;   /* Allow buttons to wrap */
+        align-items: center; /* Vertically align buttons */
+        gap: 8px;          /* Consistent spacing between buttons */
+    }
+    .admin-table td.actions:before {
+        content: ""; /* Already ensures no label */
+        /* display: none; /* Optionally, to be absolutely sure it takes no space if content:"" isn't enough */
+    }
+
+    .actions a, .actions button, .actions form button {
+        margin: 0; /* Remove individual margins, rely on flex gap */
+        /* width: auto; /* Already has this from general .actions rules if not overridden */
+    }
+
+    /* Ensure forms within actions don't add extra space or break flex layout */
+    .actions form {
+        display: contents; /* Makes the form itself not take up space in flex/grid */
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="datetime-local"],
+    .form-group textarea,
+    .form-group input[type="file"] {
+        font-size: 15px; /* Slightly smaller font for inputs */
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 15px;
+    }
+
+    .dashboard-summary {
+        grid-template-columns: 1fr; /* Stack summary cards */
+    }
 }

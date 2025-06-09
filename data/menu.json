@@ -1,47 +1,73 @@
 [
   {
-    "id": "1717923456789",
-    "name": "Classic Chocolate Cake Test",
-    "price": 1200,
-    "description": "A rich and moist chocolate cake, perfect for any occasion.",
+    "id": "1717923400001",
+    "name": "Classic Fudgy Brownie",
+    "price": 45,
+    "description": "Rich, dense, and ultra-fudgy chocolate brownie made with premium cocoa and real chocolate chunks. Perfect for true chocolate lovers.",
     "ingredients": [
-      "Flour",
+      "All-purpose flour",
+      "Cocoa powder",
+      "Dark chocolate",
+      "Butter",
       "Sugar",
-      "Cocoa Powder",
       "Eggs",
-      "Milk",
-      "Butter"
+      "Vanilla extract",
+      "Salt"
     ],
-    "image": "/images/menu/1749445311848-peakpx (1).jpg"
+    "image": "/images/menu/1749476562073-brownie.jpg"
   },
   {
-    "id": "1717923456790",
-    "name": "Vanilla Bean Dream Cake",
-    "price": 1350,
-    "description": "Elegant vanilla cake made with real vanilla beans and a light buttercream frosting.",
+    "id": "1717923400002",
+    "name": "Wheat Choco Chip Cookies",
+    "price": 15,
+    "description": "Delicious whole wheat cookies studded with melt-in-your-mouth chocolate chips. A healthy twist on a classic favorite.",
     "ingredients": [
-      "Flour",
-      "Sugar",
-      "Vanilla Beans",
+      "Whole wheat flour",
+      "Brown sugar",
+      "Butter",
       "Eggs",
-      "Milk",
-      "Butter"
+      "Baking soda",
+      "Chocolate chips",
+      "Vanilla extract",
+      "Salt"
     ],
-    "image": "/images/menu/1749446911462-peakpx.jpg"
+    "image": "/images/menu/wheat-choco-chip-cookies.jpg"
   },
   {
-    "id": "1717923456791",
-    "name": "Red Velvet Delight",
-    "price": 1500,
-    "description": "A stunning red velvet cake with a classic cream cheese frosting.",
+    "id": "1717923400003",
+    "name": "Choco Truffle Pastry",
+    "price": 40,
+    "description": "A decadent pastry layered with velvety chocolate ganache and soft sponge, topped with rich truffle cream.",
     "ingredients": [
-      "Flour",
+      "All-purpose flour",
+      "Cocoa powder",
       "Sugar",
-      "Cocoa Powder",
-      "Buttermilk",
-      "Eggs",
-      "Cream Cheese"
+      "Butter",
+      "Milk",
+      "Baking powder",
+      "Heavy cream",
+      "Dark chocolate",
+      "Vanilla essence"
     ],
-    "image": "/images/menu/1749446917563-peakpx (1).jpg"
+    "image": "/images/menu/choco-truffle-pastry.jpg"
+  },
+  {
+    "id": "1717923400004",
+    "name": "Cup Cakes",
+    "price": 25,
+    "description": "Soft and fluffy cupcakes available in chocolate and vanilla flavors, topped with whipped cream and sprinkles.",
+    "ingredients": [
+      "All-purpose flour",
+      "Sugar",
+      "Butter",
+      "Eggs",
+      "Baking powder",
+      "Milk",
+      "Vanilla essence",
+      "Cocoa powder",
+      "Whipped cream",
+      "Sprinkles"
+    ],
+    "image": "/images/menu/cup-cakes.jpg"
   }
 ]

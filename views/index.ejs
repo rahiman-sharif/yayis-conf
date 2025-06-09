@@ -1,28 +1,185 @@
 <%- include('partials/header', { title: 'Home' }) %>
 
-<section id="showcase" class="page-section">
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+    <div class="hero-background">
+        <div class="hero-overlay"></div>
+    </div>
     <div class="container">
-        <div class="hero-content scroll-animate">
-            <img src="/images/brand/logo.png" alt="Yayi's Confectionery" class="hero-logo">
-            <h1>Welcome to Yayi's Confectionery</h1>
-            <p class="hero-subtitle">Delicious homemade cakes and treats for every occasion.</p>
-            <a href="/menu" class="btn btn-secondary">Explore Our Menu</a>
+        <div class="hero-content">
+            <div class="hero-logo-wrapper">
+                <img src="/images/brand/logo.png" alt="Yayi's Confectionery" class="hero-logo">
+            </div>
+            <h1 class="hero-title">Welcome to Yayi's Confectionery</h1>
+            <p class="hero-subtitle">Crafting delicious memories, one cake at a time</p>
+            <p class="hero-description">Premium homemade cakes and treats for every celebration</p>
+            <div class="hero-buttons">
+                <a href="/menu" class="btn btn-primary hero-btn">
+                    <i class="fas fa-cake-candles"></i>
+                    <span>Explore Menu</span>
+                </a>
+                <a href="https://wa.me/91<%= whatsappNumber %>?text=Hi! I'd like to know more about your cakes" class="btn btn-outline hero-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Order Now</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Made with Love</h3>
+                <p>Every cake is crafted with passion and the finest ingredients</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Custom Designs</h3>
+                <p>Personalized cakes tailored to your special moments</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Fresh Daily</h3>
+                <p>Baked fresh every day for the perfect taste and quality</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Home Delivery</h3>
+                <p>We deliver happiness right to your doorstep</p>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="about-us" class="page-section">
+<!-- Featured Menu Section -->
+<% if (typeof featuredItems !== 'undefined' && featuredItems.length > 0) { %>
+<section id="featured-menu" class="featured-section">
     <div class="container">
-        <div class="about-content scroll-animate">
-            <h2>About Us</h2>
-            <p>
-                Yayi's Confectionery is born out of a passion for baking and a love for creating joyful moments through delightful treats. 
-                We specialize in custom cakes, cupcakes, and a variety of other confections, all made with the freshest ingredients and a sprinkle of love.
-                Whether it's a birthday, wedding, or just a craving for something sweet, we're here to make your day a little more special.
-            </p>
-            <p>
-                Explore our menu, browse our gallery of past projects, and find out where you can catch us at upcoming local stalls!
-            </p>
+        <div class="section-header">
+            <h2 class="section-title">Popular Treats</h2>
+            <p class="section-subtitle">Taste our most loved creations</p>
+        </div>
+        <div class="featured-grid">
+            <% featuredItems.forEach(item => { %>
+            <div class="featured-card">
+                <div class="featured-image">
+                    <img src="<%= item.image %>" alt="<%= item.name %>" loading="lazy">
+                    <div class="featured-overlay">
+                        <a href="/menu/<%= item.id %>" class="featured-btn">
+                            <i class="fas fa-eye"></i>
+                            <span>View Details</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="featured-content">
+                    <h3 class="featured-title"><%= item.name %></h3>
+                    <p class="featured-description"><%= item.description %></p>
+                    <div class="featured-footer">
+                        <span class="featured-price">Rs <%= item.price %></span>
+                        <a href="https://wa.me/91<%= whatsappNumber %>?text=Hi! I'd like to order <%= item.name %> (Rs <%= item.price %>)" class="featured-order-btn">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <div class="section-cta">
+            <a href="/menu" class="btn btn-secondary">View Full Menu</a>
+        </div>
+    </div>
+</section>
+<% } %>
+
+<!-- Featured Gallery Section -->
+<% if (typeof featuredProjects !== 'undefined' && featuredProjects.length > 0) { %>
+<section id="featured-gallery" class="featured-section featured-gallery-bg">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Recent Creations</h2>
+            <p class="section-subtitle">See our latest cake masterpieces</p>
+        </div>
+        <div class="gallery-grid-home">
+            <% featuredProjects.forEach(project => { %>
+            <div class="gallery-card-home">
+                <div class="gallery-image-home">
+                    <img src="<%= project.image %>" alt="<%= project.title %>" loading="lazy">
+                    <div class="gallery-overlay-home">
+                        <div class="gallery-overlay-content">
+                            <h4><%= project.title %></h4>
+                            <a href="/gallery/<%= project.id %>" class="gallery-btn-home">
+                                <i class="fas fa-search-plus"></i>
+                                <span>View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <div class="section-cta">
+            <a href="/gallery" class="btn btn-outline-light">View Full Gallery</a>
+        </div>
+    </div>
+</section>
+<% } %>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <div class="section-header">
+                    <h2 class="section-title">About Yayi's Confectionery</h2>
+                    <p class="section-subtitle">Where passion meets perfection</p>
+                </div>
+                <div class="about-text">
+                    <p>
+                        Born out of a deep passion for baking and a love for creating joyful moments, 
+                        Yayi's Confectionery specializes in custom cakes, cupcakes, and a variety of 
+                        delightful confections.
+                    </p>
+                    <p>
+                        Every creation is made with the freshest ingredients and a generous sprinkle of love. 
+                        Whether it's a birthday celebration, wedding, or just satisfying your sweet cravings, 
+                        we're here to make every moment a little more special.
+                    </p>
+                </div>               
+            </div>
+            <div class="about-image">
+                <div class="about-image-wrapper">
+                    <img src="/images/brand/largelogo.png" alt="Yayi's Confectionery" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section id="cta" class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Order Your Perfect Cake?</h2>
+            <p class="cta-subtitle">Let's create something sweet together!</p>
+            <a href="https://wa.me/91<%= whatsappNumber %>?text=Hi! I'd like to place an order for a custom cake" class="btn btn-cta">
+                <i class="fab fa-whatsapp"></i>
+                <span>Start Your Order</span>
+            </a>
         </div>
     </div>
 </section>
