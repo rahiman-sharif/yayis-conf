@@ -6,6 +6,12 @@
     <% if (typeof pageError !== 'undefined' && pageError) { %>
         <div class="alert alert-danger"><%= pageError %></div>
     <% } %>
+    <% if (messages.success) { %>
+        <div class="alert alert-success"><%= messages.success %></div>
+    <% } %>
+    <% if (messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } %>
 
     <div class="dashboard-summary">
         <div class="summary-card scroll-animate">
@@ -27,6 +33,13 @@
             <h2>WhatsApp Config</h2>
             <p class="config-status">View & Update</p> 
             <a href="/admin/config" class="btn">Configure</a>
+        </div>
+        <div class="summary-card scroll-animate">
+            <h2>Sync to GitHub</h2>
+            <p class="config-status">Push data changes to repository</p> 
+            <form action="/admin/sync-github" method="POST" style="margin-top: 10px;">
+                <button type="submit" class="btn btn-action">Sync Data Files</button>
+            </form>
         </div>
     </div>
 
