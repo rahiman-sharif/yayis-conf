@@ -3,6 +3,7 @@ const router = express.Router();
 const fs = require('fs-extra');
 const path = require('path');
 const multer = require('multer');
+const simpleGit = require('simple-git');
 const { readData, writeData } = require('../utils/fileUtils'); // Import helper functions
 
 const dataDir = path.join(__dirname, '..', 'data');
@@ -46,7 +47,8 @@ router.get('/', async (req, res) => {
             title: 'Admin Panel',
             menuCount: menuItems.length,
             projectCount: projects.length,
-            stallCount: stalls.length
+            stallCount: stalls.length,
+            messages: req.flash() // Pass flash messages
         });
     } catch (error) {
         console.error("Error loading admin dashboard data:", error);
@@ -56,7 +58,8 @@ router.get('/', async (req, res) => {
             menuCount: 0,
             projectCount: 0,
             stallCount: 0,
-            pageError: "Could not load summary data for dashboard." // Changed variable name to avoid conflict
+            pageError: "Could not load summary data for dashboard.", // Changed variable name to avoid conflict
+            messages: req.flash() // Pass flash messages even in error case
         });
     }
 });
@@ -279,5 +282,57 @@ router.post('/stalls/delete/:id', async (req, res) => {
     res.redirect('/admin/stalls');
 });
 
+// Route to handle syncing data to GitHub
+router.post('/sync-github', async (req, res) => {
+    const GITHUB_PAT = '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'; // Hardcoded PAT
+    const GITHUB_USER = 'rahiman-sharif';
+    const GITHUB_REPO = 'yayis-conf';
+    const REPO_URL = `https://${GITHUB_USER}:${GITHUB_PAT}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git`;
+    const DATA_PATH = path.join(__dirname, '..', 'data');
+    const COMMIT_MESSAGE = 'Sync data files via admin panel';
+    const GIT_USER_NAME = 'rahiman-sharif';
+    const GIT_USER_EMAIL = 'rahimansharif.s@gmail.com';
+
+    // Use a temporary directory for cloning to avoid conflicts with the running app's .git folder (if any)
+    // Or, if your project is already a git repo and you want to push from its current location:
+    const git = simpleGit({
+        baseDir: path.join(__dirname, '..'), // Assuming your server.js is in the root
+        binary: 'git',
+        maxConcurrentProcesses: 6,
+    });
+
+    try {
+        // Configure git user (important for commit attribution)
+        await git.addConfig('user.name', GIT_USER_NAME, false, 'local');
+        await git.addConfig('user.email', GIT_USER_EMAIL, false, 'local');
+        
+        // Add all files in the data directory
+        await git.add(path.join(DATA_PATH, '*'));
+        
+        // Check status to see if there are changes
+        const status = await git.status();
+        
+        if (status.files.length === 0) {
+            req.flash('success', 'No changes in data files to sync.');
+            return res.redirect('/admin'); // Or wherever your admin dashboard is
+        }
+
+        // Commit the changes
+        await git.commit(COMMIT_MESSAGE);
+        
+        // Push the changes
+        // Ensure your local branch is set up to track the remote branch, or specify the branch:
+        // e.g., await git.push(REPO_URL, 'main'); or await git.push('origin', 'main');
+        // For simplicity, assuming 'origin' remote and current branch is correctly set up.
+        // If pushing to a specific branch like 'main' or 'master':
+        await git.push(REPO_URL, status.current || 'main'); // status.current might give the current branch
+
+        req.flash('success', 'Data successfully synced to GitHub!');
+    } catch (error) {
+        console.error('GitHub Sync Error:', error);
+        req.flash('error', `Failed to sync data to GitHub: ${error.message}`);
+    }
+    res.redirect('/admin'); // Or your admin dashboard route
+});
 
 module.exports = router;
