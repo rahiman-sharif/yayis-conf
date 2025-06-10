@@ -284,7 +284,7 @@ router.post('/stalls/delete/:id', async (req, res) => {
 
 // Route to handle syncing data to GitHub
 router.post('/sync-github', async (req, res) => {
-    const GITHUB_PAT = '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'; // Hardcoded PAT
+    const GITHUB_PAT = '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'; // Hardcoded PAT
     const GITHUB_USER = 'rahiman-sharif';
     const GITHUB_REPO = 'yayis-conf';
     const REPO_URL = `https://${GITHUB_USER}:${GITHUB_PAT}@github.com/${GITHUB_USER}/${GITHUB_REPO}.git`;
