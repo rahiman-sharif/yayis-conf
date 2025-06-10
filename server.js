@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs-extra');
 const multer = require('multer');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +15,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Session and Flash middleware
+app.use(session({
+    secret: 'your secret key', // Replace with a strong secret key
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set to true if using HTTPS
+}));
+app.use(flash());
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
