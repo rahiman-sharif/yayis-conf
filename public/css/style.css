@@ -1830,7 +1830,7 @@ footer .fa-heart {
     text-align: center;
     color: white;
     overflow: hidden;
-    background-image: linear-gradient(135deg, rgba(211, 84, 0, 0.85) 0%, rgba(142, 68, 173, 0.85) 100%), url('/images/brand/largelogo.png');
+    background-image: linear-gradient(135deg, rgba(211, 84, 0, 0.85) 0%, rgba(142, 68, 173, 0.85) 100%), url('/images/brand/logo.png');
     background-size: cover;
     background-position: center;
     margin-top: -80px; /* To account for the header height */

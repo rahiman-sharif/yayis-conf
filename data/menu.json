@@ -117,7 +117,7 @@
     "ingredients": [
       "A chewy and buttery dessert bar made with white chocolate and a hint of vanilla—blondies are the lighter cousin of brownies."
     ],
-    "image": "/images/menu/1750411715694-WhatsApp Image 2025-06-20 at 2.58.12 PM.jpeg"
+    "image": "/images/menu/1750420507884-WhatsApp Image 2025-06-20 at 5.23.57 PM.jpeg"
   },
   {
     "id": "1750411791898",
@@ -156,5 +156,22 @@
       "Lemon juice"
     ],
     "image": "/images/menu/1750419376118-WhatsApp Image 2025-06-20 at 5.06.06 PM.jpeg"
+  },
+  {
+    "id": "1750420613062",
+    "name": "Classic Brownie Slab (½ kg)",
+    "price": 600,
+    "description": "A rich, dense, and moist chocolate brownie slab made with real dark chocolate and butter. Baked to perfection with a crackly top and fudgy center—ideal for slicing and sharing.",
+    "ingredients": [
+      "All-purpose flour",
+      "Cocoa powder",
+      "Dark chocolate",
+      "Butter",
+      "Sugar",
+      "Eggs",
+      "Vanilla extract",
+      "Salt"
+    ],
+    "image": "/images/menu/1750420613053-WhatsApp Image 2025-06-20 at 5.18.59 PM.jpeg"
   }
 ]
