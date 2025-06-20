@@ -15,7 +15,7 @@
       "Vanilla extract",
       "Salt"
     ],
-    "image": "/images/menu/1750411295832-WhatsApp Image 2025-06-20 at 2.51.24 PM.jpeg"
+    "image": "/images/menu/1750419253469-WhatsApp Image 2025-06-20 at 3.37.06 PM.jpeg"
   },
   {
     "id": "1750411416871",
@@ -32,7 +32,7 @@
       "Vanilla extract",
       "Salt"
     ],
-    "image": "/images/menu/1750411416855-WhatsApp Image 2025-06-20 at 2.51.50 PM.jpeg"
+    "image": "/images/menu/1750419317471-WhatsApp Image 2025-06-20 at 4.08.45 PM.jpeg"
   },
   {
     "id": "1750411500987",
@@ -93,20 +93,21 @@
   },
   {
     "id": "1750411674305",
-    "name": "Fudgy Wheat/Jaggery",
+    "name": "Fudgy Wheat/Ragi With Jaggery",
     "price": 50,
-    "description": "A healthier version of the classic fudgy brownie, made with whole wheat flour and jaggery, yet still rich and chocolaty.",
+    "description": "A wholesome twist on the classic brownie, made with nutritious wheat and ragi flour, naturally sweetened with jaggery. Moist, fudgy, and packed with earthy flavors—perfect for health-conscious chocolate lovers.",
     "ingredients": [
       "Whole wheat flour",
-      "Cocoa powder",
+      "Ragi flour",
       "Jaggery",
-      "Butter or Ghee",
-      "Eggs (optional)",
-      "Baking soda",
+      "Cocoa powder",
+      "Butter",
+      "Eggs",
       "Vanilla extract",
+      "Baking powder",
       "Salt"
     ],
-    "image": "/images/menu/1750411674301-WhatsApp Image 2025-06-20 at 2.57.35 PM.jpeg"
+    "image": "/images/menu/1750419199935-WhatsApp Image 2025-06-20 at 3.35.44 PM.jpeg"
   },
   {
     "id": "1750411715706",
@@ -136,6 +137,24 @@
       "Baking powder",
       "Salt"
     ],
-    "image": "/images/menu/1750411791891-WhatsApp Image 2025-06-20 at 2.59.43 PM.jpeg"
+    "image": "/images/menu/1750419237726-WhatsApp Image 2025-06-20 at 3.36.40 PM.jpeg"
+  },
+  {
+    "id": "1750419376123",
+    "name": "Classic Baked Cheesecake (½ kg)",
+    "price": 700,
+    "description": "A rich and creamy baked cheesecake with a buttery biscuit base, topped with a smooth, velvety filling made from premium cream cheese. A delightful indulgence for every dessert lover.",
+    "ingredients": [
+      "Cream cheese",
+      "Fresh cream",
+      "Sugar",
+      "Eggs",
+      "Vanilla extract",
+      "Butter",
+      "Digestive biscuits",
+      "Cornflour",
+      "Lemon juice"
+    ],
+    "image": "/images/menu/1750419376118-WhatsApp Image 2025-06-20 at 5.06.06 PM.jpeg"
   }
 ]
