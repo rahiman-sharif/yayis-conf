@@ -10,12 +10,12 @@
 
 <section class="page-section gallery-section">
     <div class="container">
-        <% if (projects && projects.length > 0) { %>
-            <div class="gallery-grid">
-                <% projects.forEach(project => { %>
-                    <div class="gallery-item scroll-animate">
+        <% if (projects && projects.length > 0) { %>            <div class="gallery-grid" id="main-gallery-grid">
+                <% projects.forEach((project, index) => { %>
+                    <div class="gallery-item force-visible" data-index="<%= index %>">
                         <div class="gallery-item-image-container">
-                            <img src="<%= project.image %>" alt="<%= project.title %>" class="gallery-item-image">                            <div class="gallery-item-overlay">
+                            <img src="<%= project.image %>" alt="<%= project.title %>" class="gallery-item-image">
+                            <div class="gallery-item-overlay">
                                 <a href="/gallery/<%= project.id %>" class="btn-view-full" title="View Details">
                                     <i class="fas fa-eye"></i> View Details
                                 </a>

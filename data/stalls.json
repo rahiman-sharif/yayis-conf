@@ -1,23 +1,23 @@
 [
   {
-    "id": "stall1717923600001",
-    "eventName": "Summer Fest Market Nisha Tester",
-    "dateTime": "2025-06-09T10:32",
-    "location": "City Park, Downtown Plaza",
-    "description": "Join us at the Summer Fest Market for a delightful selection of our signature cakes and treats!"
-  },
-  {
     "id": "stall1717923600002",
     "eventName": "Artisan Food Fair",
-    "dateTime": "August 10th, 2025, 11:00 AM - 7:00 PM",
+    "dateTime": "2025-01-01T11:17",
     "location": "Exhibition Grounds, Hall B",
     "description": "Discover Yayi's Confectionery at the Artisan Food Fair. We'll have exclusive cake flavors and special offers."
   },
   {
-    "id": "1749477285759",
-    "eventName": "Apartment Pongal Celebration",
-    "dateTime": "2025-06-14T19:27",
-    "location": "Nisha Apartment",
-    "description": "Stall in Nisha Apartments"
+    "id": "1750398537575",
+    "eventName": "Sweet Treats Festival",
+    "dateTime": "2025-06-20T11:18",
+    "location": "Chennai Trade Centre, Chennai",
+    "description": "Explore a wide variety of artisan cakes, from classic chocolate to exotic fruit flavors. Visit our stall for tasting sessions, exclusive offers, and custom cake orders."
+  },
+  {
+    "id": "1750398561547",
+    "eventName": "Bake & Bite Expo",
+    "dateTime": "2025-12-25T11:19",
+    "location": "Island Grounds, Chennai",
+    "description": "Join us at our cake stall to enjoy handcrafted confections made with love. From birthday specials to wedding cakes, we’ve got something for every sweet moment."
   }
 ]

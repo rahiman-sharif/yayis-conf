@@ -1,40 +1,106 @@
 <%- include('partials/header', { title: project ? project.title : 'Gallery Project' }) %>
 
-<section class="page-section gallery-detail-section">
+<% if (project) { %>
+<!-- Hero Section with Background Blur -->
+<section class="gallery-hero-detail" style="background-image: url('<%= project.image %>');">
+    <div class="gallery-hero-overlay"></div>
     <div class="container">
-        <% if (project) { %>
-            <div class="gallery-detail-container scroll-animate">
-                <div class="gallery-detail-header">
-                    <h1 class="gallery-detail-title"><%= project.title %></h1>
-                </div>
-                <div class="gallery-detail-image-wrapper">
-                    <img src="<%= project.image %>" alt="<%= project.title %>" class="gallery-detail-image">
-                </div>
-                <div class="gallery-detail-content">
-                    <% if (project.description) { %>
-                        <h3 class="gallery-detail-subtitle">About this Project:</h3>
-                        <p class="gallery-detail-description"><%= project.description %></p>
-                    <% } %>
-                    <!-- You can add more details here if available in your projects.json, e.g., date, client, specific techniques used -->
-                </div>
-                <div class="gallery-detail-actions">
-                    <a href="/gallery" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Gallery</a>
-                    <% if (whatsappNumber) { %>
-                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in a cake similar to your project: <%= encodeURIComponent(project.title) %>. Can we discuss this?" target="_blank" class="btn btn-primary btn-whatsapp-inquiry">
-                            <i class="fab fa-whatsapp"></i> Inquire about a similar project
-                        </a>
-                    <% } %>
-                </div>
-            </div>
-        <% } else { %>
-            <div class="empty-state text-center">
-                <i class="fas fa-image fa-3x text-muted mb-3"></i>
-                <h2>Project Not Found</h2>
-                <p class="text-muted">The project you are looking for does not exist or may have been moved.</p>
-                <a href="/gallery" class="btn btn-primary mt-3">Return to Gallery</a>
-            </div>
-        <% } %>
+        <div class="breadcrumb-container">
+            <a href="/">Home</a> <i class="fas fa-angle-right"></i> 
+            <a href="/gallery">Gallery</a> <i class="fas fa-angle-right"></i> 
+            <span><%= project.title %></span>
+        </div>
     </div>
 </section>
+
+<!-- Project Detail Section -->
+<section class="page-section gallery-detail-section">
+    <div class="container">
+        <div class="gallery-detail-container scroll-animate">
+            <div class="project-detail-grid">
+                <div class="project-detail-image">
+                    <div class="project-image-container">
+                        <img src="<%= project.image %>" alt="<%= project.title %>" class="project-detail-image">
+                        <div class="project-image-overlay">
+                            <div class="zoom-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-detail-info">
+                    <div class="project-detail-header">
+                        <h1 class="project-title"><%= project.title %></h1>
+                        <% if (project.date) { %>
+                            <div class="project-date">
+                                <i class="far fa-calendar-alt"></i> <%= new Date(project.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'}) %>
+                            </div>
+                        <% } %>
+                    </div>
+                    
+                    <div class="project-description">
+                        <h3>Project Details</h3>
+                        <p><%= project.description %></p>
+                    </div>
+                    
+                    <% if (project.tags && project.tags.length > 0) { %>
+                        <div class="project-tags">
+                            <h3>Cake Type</h3>
+                            <div class="tag-container">
+                                <% project.tags.forEach(tag => { %>
+                                    <span class="project-tag"><%= tag %></span>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                    <div class="project-inspiration">
+                        <h3>Inspiration</h3>
+                        <p>Interested in something similar? Our talented bakers can create a custom cake inspired by this design, tailored to your preferences and occasion.</p>
+                    </div>
+                    
+                    <div class="project-actions">
+                        <% if (whatsappNumber) { %>
+                            <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in a cake similar to your project: <%= encodeURIComponent(project.title) %>. Can we discuss this?" 
+                               target="_blank" 
+                               class="btn btn-primary btn-lg btn-whatsapp-inquiry">
+                                <i class="fab fa-whatsapp"></i> Inquire about a similar cake
+                            </a>
+                        <% } else { %>
+                            <p class="inquiry-notice">To inquire about a similar cake, please contact us directly. Admin: Please set WhatsApp number in config.</p>
+                        <% } %>
+                        <a href="/gallery" class="btn btn-outline btn-lg">
+                            <i class="fas fa-arrow-left"></i> Back to Gallery
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="related-projects">
+                <h2>You may also like</h2>
+                <div class="related-projects-grid">
+                    <!-- This section would need server-side implementation to show related projects -->
+                    <!-- Placeholder for now -->
+                    <div class="related-project-placeholder">
+                        <i class="fas fa-birthday-cake"></i>
+                        <p>More cake creations available in our gallery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<% } else { %>
+<section class="page-section">
+    <div class="container">
+        <div class="empty-state">
+            <div class="empty-state-icon"><i class="fas fa-image"></i></div>
+            <h2 class="empty-state-title">Project Not Found</h2>
+            <p class="empty-state-message">We couldn't find the gallery item you're looking for.</p>
+            <a href="/gallery" class="btn btn-primary">Back to Gallery</a>
+        </div>
+    </div>
+</section>
+<% } %>
 
 <%- include('partials/footer') %>

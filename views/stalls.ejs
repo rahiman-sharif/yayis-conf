@@ -1,6 +1,6 @@
 <%- include('partials/header', { title: 'Upcoming Stalls' }) %>
 
-<section class="stalls-hero page-hero"> <!-- Added page-hero -->
+<section class="stalls-hero">
     <div class="hero-overlay"></div>
     <div class="hero-content text-center">
         <div class="breadcrumb-container">
@@ -14,15 +14,121 @@
 <section class="page-section stalls-section">
     <div class="container">
         <% if (stalls && stalls.length > 0) { %>
+            <!-- Sort stalls: Current first, then upcoming, then expired -->
+            <% 
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // Add isExpired, isCurrent properties to each stall
+            const processedStalls = stalls.map(stall => {
+                let eventDate;
+                let isExpired = false;
+                let isCurrent = false;
+                let order = 2; // Default order (upcoming)
+                
+                try {
+                    if (stall.dateTime.includes('T')) {
+                        eventDate = new Date(stall.dateTime);
+                    } else {
+                        const dateStr = stall.dateTime.split(',')[0];
+                        eventDate = new Date(dateStr);
+                    }
+                    
+                    if (!isNaN(eventDate.getTime())) {
+                        const eventDateOnly = new Date(eventDate);
+                        eventDateOnly.setHours(0, 0, 0, 0);
+                        
+                        const tomorrow = new Date(today);
+                        tomorrow.setDate(tomorrow.getDate() + 1);
+                        
+                        if (eventDateOnly.getTime() < today.getTime()) {
+                            isExpired = true;
+                            order = 3; // Expired
+                        } else if (eventDateOnly.getTime() <= tomorrow.getTime()) {
+                            isCurrent = true;
+                            order = 1; // Current/Today
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error parsing date for sorting:', e);
+                }
+                
+                return { ...stall, isExpired, isCurrent, order, eventDate };
+            });
+            
+            // Sort by order (current, upcoming, expired), then by date
+            processedStalls.sort((a, b) => {
+                if (a.order !== b.order) {
+                    return a.order - b.order;
+                }
+                
+                // If same category, sort by date
+                if (a.eventDate && b.eventDate) {
+                    return a.eventDate - b.eventDate;
+                }
+                
+                return 0;
+            });
+            %>
+            
             <div class="stalls-grid">
-                <% stalls.forEach(stall => { %>
-                    <div class="stall-card scroll-animate">
+                <% processedStalls.forEach(stall => { %>                    <div class="stall-card scroll-animate" data-stall-id="<%= stall.id %>">
                         <div class="stall-card-header">
-                            <h3 class="stall-event-name"><i class="fas fa-store-alt mr-2"></i><%= stall.eventName %></h3>
-                        </div>
-                        <div class="stall-card-body">
-                            <div class="stall-info-item">
-                                <i class="fas fa-calendar-alt"></i>
+                            <h3 class="stall-event-name"><i class="fas fa-store-alt"></i><span><%= stall.eventName %></span></h3>
+                            <% 
+                            // Parse the date from stall.dateTime
+                            let eventDate;
+                            let statusClass = '';
+                            let statusText = '';
+                            
+                            try {
+                                // Check if dateTime is in ISO format or string format
+                                if (stall.dateTime.includes('T')) {
+                                    eventDate = new Date(stall.dateTime); // ISO format
+                                } else {
+                                    // Try to parse string format (this is a simple parsing, may need enhancement)
+                                    const dateStr = stall.dateTime.split(',')[0]; // Take the date part before first comma
+                                    eventDate = new Date(dateStr);
+                                }
+                                
+                                // Get today's date without time component for comparison
+                                const today = new Date();
+                                today.setHours(0, 0, 0, 0);
+                                
+                                // Create a tomorrow date for "Current" events
+                                const tomorrow = new Date(today);
+                                tomorrow.setDate(tomorrow.getDate() + 1);
+                                
+                                // Compare dates
+                                if (!isNaN(eventDate.getTime())) {
+                                    // Remove time component for comparison
+                                    const eventDateOnly = new Date(eventDate);
+                                    eventDateOnly.setHours(0, 0, 0, 0);
+                                    
+                                    if (eventDateOnly.getTime() < today.getTime()) {
+                                        statusClass = 'stall-status-expired';
+                                        statusText = 'Expired';
+                                    } else if (eventDateOnly.getTime() === today.getTime()) {
+                                        statusClass = 'stall-status-current';
+                                        statusText = 'Today';
+                                    } else if (eventDateOnly.getTime() <= tomorrow.getTime()) {
+                                        statusClass = 'stall-status-current';
+                                        statusText = 'Tomorrow';
+                                    } else {
+                                        statusClass = 'stall-status-upcoming';
+                                        statusText = 'Upcoming';
+                                    }
+                                }
+                            } catch (e) {
+                                console.error('Error parsing date:', e);
+                            }
+                            %>
+                            <% if (statusText) { %>                                <div class="stall-status <%= statusClass %>" aria-label="Event status: <%= statusText %>">
+                                    <i class="<%= statusClass === 'stall-status-expired' ? 'fas fa-calendar-times' : statusClass === 'stall-status-current' ? 'fas fa-calendar-check' : 'fas fa-calendar-plus' %>"></i><%= statusText %>
+                                </div>
+                            <% } %>
+                        </div>                        <div class="stall-card-body" style="padding: 15px;">
+                            <div class="stall-info-item" style="margin-bottom: 5px;">                                
                                 <div class="stall-info-content">
                                     <strong>Date & Time:</strong>
                                     <span>
@@ -43,16 +149,14 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="stall-info-item">
-                                <i class="fas fa-map-marker-alt"></i>
+                            <div class="stall-info-item" style="margin-bottom: 5px;">
                                 <div class="stall-info-content">
                                     <strong>Location:</strong>
                                     <span><%= stall.location %></span>
                                 </div>
                             </div>
                             <% if (stall.description) { %>
-                                <div class="stall-info-item stall-description-item">
-                                    <i class="fas fa-info-circle"></i>
+                                <div class="stall-info-item stall-description-item" style="margin-bottom: 5px;">                                    
                                     <div class="stall-info-content">
                                         <strong>Details:</strong>
                                         <p class="stall-description-text line-clamp-4"><%= stall.description %></p>
@@ -70,8 +174,7 @@
                     </div>
                 <% }); %>
             </div>
-        <% } else { %>
-            <div class="empty-state empty-stalls-state"> <!-- Added common empty-state class -->
+        <% } else { %>            <div class="empty-state empty-stalls-state scroll-animate">
                 <i class="fas fa-store-alt-slash empty-state-icon"></i>
                 <h2 class="empty-state-title">No Stalls Scheduled</h2>
                 <p class="empty-state-message">We're planning our next appearances! Please check back soon for updates on where to find us.</p>

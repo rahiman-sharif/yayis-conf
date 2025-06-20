@@ -1,20 +1,38 @@
 [
   {
-    "id": "proj1717923500001",
-    "title": "Enchanted Forest Wedding Cake",
-    "description": "A multi-tiered wedding cake featuring intricate sugar flowers and woodland creature details. Flavors included lemon raspberry and double chocolate.",
-    "image": "/images/projects/project1.jpg"
+    "id": "1750395923401",
+    "title": "Choco Love Birthday Brownie",
+    "description": "A rich, chocolate-drizzled brownie cake topped with crunchy pearls and chocolate balls, personalized with a loving birthday message: \"Happy Birthday Jeevi Babe",
+    "image": "/images/projects/1750395923396-WhatsApp Image 2025-06-20 at 10.32.38 AM (1).jpeg"
   },
   {
-    "id": "proj1717923500002",
-    "title": "Superhero Birthday Bash Cake",
-    "description": "A vibrant and action-packed cake for a child's birthday, showcasing their favorite superheroes in edible form.",
-    "image": "/images/projects/project2.jpg"
+    "id": "1750395939123",
+    "title": "Rosy Whip Delight",
+    "description": "A classic white cream cake decorated with elegant pink and white rose swirls, centered with crumbled cake bits for a soft, vintage touch",
+    "image": "/images/projects/1750395939119-WhatsApp Image 2025-06-20 at 10.32.38 AM (2).jpeg"
   },
   {
-    "id": "proj1717923500003",
-    "title": "Corporate Anniversary Logo Cake",
-    "description": "A sleek and professional cake designed with the company's logo for their 10th anniversary celebration.",
-    "image": "/images/projects/project3.jpg"
+    "id": "1750395954090",
+    "title": "Nutty Choco Celebration Cake",
+    "description": "A decadent chocolate brownie base loaded with chopped nuts, caramel drizzle, and signature chocolates, finished with a golden \"Happy Birthday\" topper.",
+    "image": "/images/projects/1750395954087-WhatsApp Image 2025-06-20 at 10.32.38 AM.jpeg"
+  },
+  {
+    "id": "1750395971502",
+    "title": "Doraemon Fantasy Cake",
+    "description": "A two-tier cake in soft blue and white tones, topped with a cheerful Doraemon figure – perfect for a kid’s birthday celebration with a cartoon theme.",
+    "image": "/images/projects/1750395971499-WhatsApp Image 2025-06-20 at 10.32.39 AM (1).jpeg"
+  },
+  {
+    "id": "1750395977992",
+    "title": "Cherry Blush Heart Cake",
+    "description": "A blush pink cream cake adorned with fluffy cream swirls, shiny red cherries, silver beads, and golden heart accents – a sweet gesture of love.",
+    "image": "/images/projects/1750396000783-WhatsApp Image 2025-06-20 at 10.32.39 AM (2).jpeg"
+  },
+  {
+    "id": "1750395993425",
+    "title": "Butterfly Dreams Blueberry Cake",
+    "description": "A dreamy lavender and white cake crowned with a delicate butterfly topper and filled with luscious blueberry glaze – perfect for a whimsical celebration.",
+    "image": "/images/projects/1750395993420-WhatsApp Image 2025-06-20 at 10.32.39 AM.jpeg"
   }
 ]

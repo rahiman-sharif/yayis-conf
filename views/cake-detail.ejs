@@ -1,37 +1,86 @@
-<%- include('partials/header', { title: 'Cake Detail' }) %>
+<%- include('partials/header', { title: cake ? cake.name : 'Product Detail' }) %>
 
-<section class="page-section">
+<% if (cake) { %>
+<!-- Hero Section with Background Blur -->
+<section class="product-hero" style="background-image: url('<%= cake.image %>');">
+    <div class="product-hero-overlay"></div>
     <div class="container">
-        <% if (cake) { %>
-            <div class="cake-detail-container scroll-animate">
-                <div class="cake-detail-image">
-                    <img src="<%= cake.image %>" alt="<%= cake.name %>">
-                </div>
-                <div class="cake-detail-info">
-                    <h1><%= cake.name %></h1>
-                    <p class="price">Rs <%= cake.price %></p>
-                    <p class="description"><%= cake.description %></p>
-                    <% if (cake.ingredients && cake.ingredients.length > 0) { %>
-                        <h4>Ingredients:</h4>
-                        <ul class="ingredients-list">
-                            <% cake.ingredients.forEach(ingredient => { %>
-                                <li><%= ingredient %></li>
-                            <% }); %>
-                        </ul>
-                    <% } %>
-                    <% if (whatsappNumber) { %>
-                        <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(cake.name) %> for Rs <%= cake.price %>. My details are: [Your Name], [Your Address for Delivery/Pickup details]." target="_blank" class="btn btn-primary btn-whatsapp-order">
-                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                        </a>
-                    <% } else { %>
-                        <p class="mt-1">To order, please contact us directly. Admin: Please set WhatsApp number in config.</p>
-                    <% } %>
-                </div>
-            </div>
-        <% } else { %>
-            <p class="text-center mt-2">Cake not found. Please return to the <a href="/menu">menu</a>.</p>
-        <% } %>
+        <div class="breadcrumb-container">
+            <a href="/">Home</a> <i class="fas fa-angle-right"></i> 
+            <a href="/menu">Menu</a> <i class="fas fa-angle-right"></i> 
+            <span><%= cake.name %></span>
+        </div>
     </div>
 </section>
+
+<!-- Product Detail Section -->
+<section class="page-section product-detail-section">
+    <div class="container">
+        <div class="product-detail-container scroll-animate">
+            <div class="product-detail-grid">
+                <div class="product-detail-image">
+                    <div class="product-image-container">
+                        <img src="<%= cake.image %>" alt="<%= cake.name %>">
+                        <div class="product-image-overlay">
+                            <div class="zoom-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-detail-info">
+                    <h1 class="product-title"><%= cake.name %></h1>
+                    <div class="product-price">
+                        <span class="price-label">Price:</span>
+                        <span class="price-value">Rs <%= cake.price %></span>
+                    </div>
+                    
+                    <div class="product-description">
+                        <h3>Description</h3>
+                        <p><%= cake.description %></p>
+                    </div>
+                    
+                    <% if (cake.ingredients && cake.ingredients.length > 0) { %>
+                        <div class="product-ingredients">
+                            <h3>Ingredients</h3>
+                            <div class="ingredient-tags">
+                                <% cake.ingredients.forEach(ingredient => { %>
+                                    <span class="ingredient-tag"><%= ingredient %></span>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                    <div class="product-actions">
+                        <% if (whatsappNumber) { %>
+                            <a href="https://wa.me/<%= whatsappNumber %>?text=Hi, I'm interested in ordering the <%= encodeURIComponent(cake.name) %> for Rs <%= cake.price %>. My details are: [Your Name], [Your Address for Delivery/Pickup details]." 
+                               target="_blank" 
+                               class="btn btn-primary btn-lg btn-whatsapp-order">
+                                <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                            </a>
+                        <% } else { %>
+                            <p class="order-notice">To order, please contact us directly. Admin: Please set WhatsApp number in config.</p>
+                        <% } %>
+                        <a href="/menu" class="btn btn-outline btn-lg">
+                            <i class="fas fa-arrow-left"></i> Back to Menu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<% } else { %>
+<section class="page-section">
+    <div class="container">
+        <div class="empty-state">
+            <div class="empty-state-icon"><i class="fas fa-exclamation-circle"></i></div>
+            <h2 class="empty-state-title">Product Not Found</h2>
+            <p class="empty-state-message">We couldn't find the item you're looking for.</p>
+            <a href="/menu" class="btn btn-primary">Back to Menu</a>
+        </div>
+    </div>
+</section>
+<% } %>
 
 <%- include('partials/footer') %>
