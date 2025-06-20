@@ -1,9 +1,27 @@
 [
   {
-    "id": "1717923400001",
-    "name": "Classic Fudgy Brownie",
+    "id": "1750411295850",
+    "name": "Roasted Almonds Brownie",
+    "price": 50,
+    "description": "A rich chocolate brownie loaded with crunchy roasted almonds for added texture and nutty flavor. A perfect treat for nut and chocolate lovers.",
+    "ingredients": [
+      "All-purpose flour",
+      "Cocoa powder",
+      "Dark chocolate",
+      "Butter",
+      "Sugar",
+      "Eggs",
+      "Roasted almonds",
+      "Vanilla extract",
+      "Salt"
+    ],
+    "image": "/images/menu/1750411295832-WhatsApp Image 2025-06-20 at 2.51.24 PM.jpeg"
+  },
+  {
+    "id": "1750411416871",
+    "name": "Fudgy Brownie",
     "price": 45,
-    "description": "Rich, dense, and ultra-fudgy chocolate brownie made with premium cocoa and real chocolate chunks. Perfect for true chocolate lovers.",
+    "description": "Intensely chocolatey and moist brownie with a gooey center and a crackly top, crafted for those who love their brownies extra fudgy.",
     "ingredients": [
       "All-purpose flour",
       "Cocoa powder",
@@ -14,60 +32,110 @@
       "Vanilla extract",
       "Salt"
     ],
-    "image": "/images/menu/1749476562073-brownie.jpg"
+    "image": "/images/menu/1750411416855-WhatsApp Image 2025-06-20 at 2.51.50 PM.jpeg"
   },
   {
-    "id": "1717923400002",
-    "name": "Wheat Choco Chip Cookies",
-    "price": 15,
-    "description": "Delicious whole wheat cookies studded with melt-in-your-mouth chocolate chips. A healthy twist on a classic favorite.",
+    "id": "1750411500987",
+    "name": " Black Forest Cake (1/2 kg ",
+    "price": 450,
+    "description": "A classic German dessert made with layers of moist chocolate sponge, whipped cream, and cherry compote, topped with chocolate shavings.",
+    "ingredients": [
+      "All-purpose flour",
+      "Cocoa powder",
+      "Sugar",
+      "Eggs",
+      "Butter",
+      "Whipping cream",
+      "Cherries",
+      "Chocolate shavings",
+      "Vanilla extract",
+      "Baking powder",
+      "Salt"
+    ],
+    "image": "/images/menu/1750411500980-WhatsApp Image 2025-06-20 at 2.54.51 PM.jpeg"
+  },
+  {
+    "id": "1750411579039",
+    "name": "Choco Truffle (1/2 kg )",
+    "price": 550,
+    "description": "A decadent chocolate cake filled and frosted with silky smooth chocolate ganache, perfect for any chocolate celebration.",
+    "ingredients": [
+      "All-purpose flour",
+      "Cocoa powder",
+      "Dark chocolate",
+      "Butter",
+      "Sugar",
+      "Eggs",
+      "Fresh cream",
+      "Vanilla extract",
+      "Baking powder",
+      "Salt"
+    ],
+    "image": "/images/menu/1750411579036-WhatsApp Image 2025-06-20 at 2.55.16 PM.jpeg"
+  },
+  {
+    "id": "1750411636725",
+    "name": "Roasted Almonds Wheat/Ragi with Jaggery",
+    "price": 55,
+    "description": "A wholesome twist on brownies made with wheat or ragi flour, sweetened naturally with jaggery, and topped with roasted almonds.",
+    "ingredients": [
+      "Whole wheat flour or Ragi flour",
+      "Cocoa powder",
+      "Jaggery",
+      "Butter or Ghee",
+      "Eggs (optional)",
+      "Roasted almonds",
+      "Baking soda",
+      "Vanilla extract",
+      "Salt"
+    ],
+    "image": "/images/menu/1750411636720-WhatsApp Image 2025-06-20 at 2.56.57 PM.jpeg"
+  },
+  {
+    "id": "1750411674305",
+    "name": "Fudgy Wheat/Jaggery",
+    "price": 50,
+    "description": "A healthier version of the classic fudgy brownie, made with whole wheat flour and jaggery, yet still rich and chocolaty.",
     "ingredients": [
       "Whole wheat flour",
+      "Cocoa powder",
+      "Jaggery",
+      "Butter or Ghee",
+      "Eggs (optional)",
+      "Baking soda",
+      "Vanilla extract",
+      "Salt"
+    ],
+    "image": "/images/menu/1750411674301-WhatsApp Image 2025-06-20 at 2.57.35 PM.jpeg"
+  },
+  {
+    "id": "1750411715706",
+    "name": "Blondies (White Chocolate Brownies)",
+    "price": 50,
+    "description": "A chewy and buttery dessert bar made with white chocolate and a hint of vanilla—blondies are the lighter cousin of brownies.",
+    "ingredients": [
+      "A chewy and buttery dessert bar made with white chocolate and a hint of vanilla—blondies are the lighter cousin of brownies."
+    ],
+    "image": "/images/menu/1750411715694-WhatsApp Image 2025-06-20 at 2.58.12 PM.jpeg"
+  },
+  {
+    "id": "1750411791898",
+    "name": "Plum Cake (250 gms)",
+    "price": 200,
+    "description": "A festive spiced cake rich with dried fruits, nuts, and a hint of rum essence, perfect for holiday celebrations.",
+    "ingredients": [
+      "All-purpose flour",
+      "Mixed dried fruits",
+      "Nuts",
       "Brown sugar",
       "Butter",
       "Eggs",
-      "Baking soda",
-      "Chocolate chips",
-      "Vanilla extract",
+      "Spices (cinnamon",
+      "nutmeg)",
+      "Rum essence or orange juice",
+      "Baking powder",
       "Salt"
     ],
-    "image": "/images/menu/wheat-choco-chip-cookies.jpg"
-  },
-  {
-    "id": "1717923400003",
-    "name": "Choco Truffle Pastry",
-    "price": 40,
-    "description": "A decadent pastry layered with velvety chocolate ganache and soft sponge, topped with rich truffle cream.",
-    "ingredients": [
-      "All-purpose flour",
-      "Cocoa powder",
-      "Sugar",
-      "Butter",
-      "Milk",
-      "Baking powder",
-      "Heavy cream",
-      "Dark chocolate",
-      "Vanilla essence"
-    ],
-    "image": "/images/menu/choco-truffle-pastry.jpg"
-  },
-  {
-    "id": "1717923400004",
-    "name": "Cup Cakes",
-    "price": 25,
-    "description": "Soft and fluffy cupcakes available in chocolate and vanilla flavors, topped with whipped cream and sprinkles.",
-    "ingredients": [
-      "All-purpose flour",
-      "Sugar",
-      "Butter",
-      "Eggs",
-      "Baking powder",
-      "Milk",
-      "Vanilla essence",
-      "Cocoa powder",
-      "Whipped cream",
-      "Sprinkles"
-    ],
-    "image": "/images/menu/cup-cakes.jpg"
+    "image": "/images/menu/1750411791891-WhatsApp Image 2025-06-20 at 2.59.43 PM.jpeg"
   }
 ]
