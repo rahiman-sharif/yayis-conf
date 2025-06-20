@@ -816,6 +816,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Force gallery detail container to be visible (fallback for gallery page)
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryDetailContainer = document.querySelector('.gallery-detail-container');
+    if (galleryDetailContainer) {
+        console.log('Gallery detail page detected, forcing visibility');
+        
+        // Force it to be visible after a small delay
+        setTimeout(() => {
+            galleryDetailContainer.classList.add('revealed');
+            galleryDetailContainer.classList.add('force-visible');
+        }, 100);
+    }
+});
+
 // Utility functions for animations
 function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();

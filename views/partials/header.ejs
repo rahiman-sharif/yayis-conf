@@ -22,13 +22,12 @@
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
-            
-            <nav id="main-nav" class="main-nav">
+              <nav id="main-nav" class="main-nav">
                 <ul>
                     <li class="<%= title === 'Home' ? 'current' : '' %>"><a href="/">Home</a></li>
-                    <li class="<%= title === 'Menu' || title === 'Cake Detail' ? 'current' : '' %>"><a href="/menu">Menu</a></li>
-                    <li class="<%= title === 'Project Gallery' ? 'current' : '' %>"><a href="/gallery">Gallery</a></li>
-                    <li class="<%= title === 'Upcoming Stalls' ? 'current' : '' %>"><a href="/stalls">Stalls</a></li>
+                    <li class="<%= title === 'Menu' || title === 'Our Menu' || title === 'Cake Detail' || title.includes('Menu') ? 'current' : '' %>"><a href="/menu">Menu</a></li>
+                    <li class="<%= title === 'Project Gallery' || title === 'Gallery Project' || title.includes('Gallery') ? 'current' : '' %>"><a href="/gallery">Gallery</a></li>
+                    <li class="<%= title === 'Upcoming Stalls' || title.includes('Stall') ? 'current' : '' %>"><a href="/stalls">Stalls</a></li>
                 </ul>
             </nav>
         </div>
